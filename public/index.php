@@ -8,5 +8,3 @@
 
 </body>
 </html>
-
-// TODO: Using javascript and fetch, add different files to a div inside a blank (or loading screen) html/php page.
