@@ -2,7 +2,6 @@
 
 use Random\RandomException;
 
-
 function db_connect(): mysqli {
     $file = yaml_parse_file("../../config/sql.yaml");
     $hostname = "localhost";
@@ -33,7 +32,7 @@ function logout(): bool {
 /**
  * @throws RandomException
  */
-function new_user($username, $password): bool | string {
+function new_user($username, $password, $role): bool | string {
     // Register the user in the database
 
     $conn = db_connect();
@@ -53,6 +52,14 @@ function new_user($username, $password): bool | string {
     // Insert them into the database
     $conn->execute_query("INSERT INTO users (usr_name, usr_password) VALUES ('$username', '$password_hash')");
 
+    // Assign their role
+    // Get the user ID
+    $result = $conn->execute_query("SELECT usr_id FROM users WHERE usr_name = '$username'");
+    $usr_id = $result->fetch_assoc()["usr_id"];
+
+    // Add to the database
+    $conn->execute_query("INSERT INTO roles (rl_usr_id, rl_role) VALUES ('$usr_id', '$role')");
+
     // Log them in
     login($username, $password);
 
@@ -68,7 +75,7 @@ function confirm_session(): bool {
     $expire_days = 7;
 
     // Check for a session, then cookie triplet, then cookie double (problem), then return false
-    if (isset($_SESSION["auth"]) && $_SESSION["auth"]) {
+    if (isset($_SESSION["auth"]) && $_SESSION["auth"] && isset($_SESSION["role"])) {
         // There is a session; no more info needed. Return true
         return true;
     } else if (isset($_COOKIE["auth"])) {
@@ -121,6 +128,12 @@ function confirm_session(): bool {
             session_start();
             $_SESSION["auth"] = true;
 
+            // Get their role and store that as a session
+            $user_result = $conn->execute_query("SELECT usr_id FROM users WHERE usr_name = '$username'");
+            $usr_id = $user_result->fetch_assoc()["usr_id"];
+            $role_result = $conn->execute_query("SELECT rl_role FROM roles WHERE rl_usr_id = '$usr_id'");
+            $_SESSION["role"] = mysqli_fetch_assoc($role_result)["rl_role"];
+
             // Validate that all was successful and the user is confirmed logged in
             return true;
 
@@ -132,7 +145,7 @@ function confirm_session(): bool {
             // Series is valid but token is not; something malicious has happened
 
             // Delete all database records with the series identifier present
-            $conn->execute_query("DELETE from sessions WHERE sn_series_identifier = '$series_identifier'");
+            $conn->execute_query("DELETE FROM sessions WHERE sn_series_identifier = '$series_identifier'");
 
             // Remove the cookie by setting it to expire a time in the past
             setcookie("auth", "", time() - 3600, "/");
@@ -190,6 +203,11 @@ function login($username, $password): bool {
         // Create a session
         session_start();
         $_SESSION["auth"] = true;
+
+        // Get their role and store that as a session
+        $usr_id = $row["usr_id"];
+        $role_result = $conn->execute_query("SELECT rl_role FROM roles WHERE rl_usr_id = '$usr_id'");
+        $_SESSION["role"] = mysqli_fetch_assoc($role_result)["rl_role"];
 
         // Confirm the login was successful
         return true;
