@@ -1,12 +1,123 @@
+<?php
+
+use Random\RandomException;
+
+require_once "../api/login/authentication.php";
+?>
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Home &bull; CGC Color Wars</title>
+    <title>CGC Color Wars</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/fonts.css">
 </head>
 <body>
-<div class="navbar">
+<script src="js/nav.js" defer></script>
+<nav class="nav-dtp-navbar">
+    <div class="nav-dtp-navigation">
+        <a href="index.php" class="nav-dtp-navbar-link"><img src="img/color-wars-title.png" alt="Color Wars Logo" class="nav-dtp-navbar-logo"></a>
+        <div class="nav-dtp-pages">
+            <a href="index.php">Home</a>
+            <a href="index.php?page=history">History</a>
+            <a href="index.php?page=about">About</a>
+            <?php
+            try {
+                if (confirm_session()) {
+                    if ($_SESSION["role"] == 2) {
+                        echo "<a href='index.php?page=users'>Users</a>";
+                        echo "<a href='index.php?page=teams'>Teams</a>";
+                        echo "<a href='index.php?page=groups'>Groups</a>";
+                    }
+                    if ($_SESSION["role"] == 1) {
+                        echo "<div  class='nav-dtp-points-button'><a href='index.php?page=add-points'>Add Points</a></div>";
+                    }
+                }
+            } catch (RandomException $e) {
+            }
+            ?>
+        </div>
+    </div>
 
-</div>
+    <?php
+    try {
+        if (confirm_session()) {
+            ?>
+            <div class="nav-dtp-user-info">
+                <div class="nav-dtp-name-button">
+                    <a href="login/user-info.php" class="nav-dtp-name"><?php echo $_SESSION["name"]; ?></a>
+                </div>
+                <div class="nav-dtp-logout-button">
+                    <a href="login/logout.php" class="nav-dtp-logout">Log Out</a>
+                </div>
+            </div>
+        <?php } else { ?>
+            <div class="nav-dtp-login">
+                <div class="nav-dtp-signup-button">
+                    <a href="login/signup.php">Sign Up</a>
+                </div>
+                <div class="nav-dtp-login-button">
+                    <a href="login/index.php">Log In</a>
+                </div>
+            </div>
+        <?php }
+    } catch (RandomException $e) {
+    } ?>
+
+</nav>
+<nav class="nav-mbl-navbar">
+    <a href="index.php" class="nav-mbl-navbar-link"><img src="img/color-wars-main.png" alt="Color Wars Logo" class="nav-mbl-navbar-logo"></a>
+    <img src="img/hamburger-icon.png" alt="Menu" class="nav-mbl-hamburger-icon">
+
+    <div class="nav-mbl-hamburger-menu">
+        <div class="nav-mbl-hamburger-close">
+            <img src="img/hamburger-close.png" alt="Close Menu" class="nav-mbl-hamburger-close-img">
+        </div>
+        <div class="nav-mbl-page-navigation">
+            <a class="nav-mbl-pages" href="index.php">Home</a>
+            <a class="nav-mbl-pages" href="index.php?page=history">History</a>
+            <a class="nav-mbl-pages" href="index.php?page=about">About</a>
+            <?php
+            try {
+                if (confirm_session()) {
+                    if ($_SESSION["role"] == 2) {
+                        echo "<a class='nav-mbl-pages' href='index.php?page=users'>Users</a>";
+                        echo "<a class='nav-mbl-pages' href='index.php?page=teams'>Teams</a>";
+                        echo "<a class='nav-mbl-pages' href='index.php?page=groups'>Groups</a>";
+                    }
+                    if ($_SESSION["role"] == 1) {
+                        echo "<div  class='nav-mbl-points-button'><a href='index.php?page=add-points' class='nav-mbl-pages'>Add Points</a></div>";
+                    }
+                }
+            } catch (RandomException $e) {
+            }
+            ?>
+        </div>
+
+        <?php
+        try {
+            if (confirm_session()) {
+                ?>
+                <div class="nav-mbl-user-info">
+                    <a href="login/user-info.php" class="nav-mbl-name"><?php echo $_SESSION["name"]; ?></a>
+                    <div class="nav-mbl-logout-button">
+                        <a href="login/logout.php" class="nav-mbl-logout">Log Out</a>
+                    </div>
+                </div>
+        <?php } else { ?>
+                <div class="nav-mbl-login">
+                    <div class="nav-mbl-signup-button">
+                        <a href="login/signup.php">Sign Up</a>
+                    </div>
+                    <div class="nav-mbl-login-button">
+                        <a href="login/index.php">Log In</a>
+                    </div>
+                </div>
+        <?php }
+        } catch (RandomException $e) {
+        } ?>
+    </div>
+</nav>
 </body>
 </html>

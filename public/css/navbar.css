@@ -1,0 +1,456 @@
+.nav-dtp-navbar {
+    width: 70%;
+    padding: 12px 15%;
+    height: 48px;
+    background-color: white;
+
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (orientation: portrait) {
+    .nav-dtp-navbar {
+        display: none;
+    }
+
+    .nav-mbl-navbar {
+        display: flex;
+    }
+}
+
+@media (orientation: landscape) {
+    .nav-dtp-navbar {
+        display: flex;
+    }
+
+    .nav-mbl-navbar {
+        display: none;
+    }
+}
+
+.nav-dtp-navigation {
+    width: 70%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+}
+
+.nav-dtp-login {
+
+    width: 30%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+
+}
+
+.nav-dtp-pages {
+    height: 100%;
+    width: 100%;
+    padding-left: 32px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.nav-dtp-pages a {
+    font-family: cachet, serif;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    padding: 0 16px;
+    font-size: 20px;
+    transition: 0.25s;
+}
+
+.nav-dtp-pages a:hover {
+    transform: translateY(-2px);
+
+    transition: 0.25s;
+}
+
+.nav-dtp-navbar-link {
+    border-radius: 12px;
+    padding: 4px;
+    height: 100%;
+
+    transition: 0.25s;
+}
+
+.nav-dtp-navbar-logo {
+    height: 100%;
+}
+
+.nav-dtp-points-button {
+    height: 80%;
+    background-color: #fcaf17;
+    border-radius: 12px;
+    padding-bottom: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    transition: 0.25s;
+}
+
+.nav-dtp-points-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px #dadada;
+
+    transition: 0.25s;
+}
+
+.nav-dtp-points-button a:hover {
+    transform: none;
+}
+
+.nav-dtp-login-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 40%;
+    height: 80%;
+
+    background-color: #0089d0;
+    border: 2px #0089d0 solid;
+    border-radius: 12px;
+    margin-left: 8px;
+    margin-right: 8px;
+
+    transition: 0.25s;
+
+}
+
+.nav-dtp-login-button:hover {
+    background-color: #0060af;
+    border: 2px #0060af solid;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px #cacaca;
+
+    transition: 0.25s;
+}
+
+.nav-dtp-login-button a {
+    font-family: cachet, serif;
+    color: #ffffff;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.nav-dtp-signup-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 40%;
+    height: 80%;
+
+    background-color: white;
+    border: 2px #0089d0 solid;
+    border-radius: 12px;
+    margin-left: 8px;
+    margin-right: 8px;
+
+    transition: 0.25s;
+
+}
+
+.nav-dtp-signup-button:hover {
+    border: 2px #0060af solid;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px #cacaca;
+
+    transition: 0.25s;
+}
+
+.nav-dtp-signup-button a {
+    font-family: cachet, serif;
+    color: black;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.nav-dtp-user-info {
+    width: 30%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.nav-dtp-name {
+    font-family: cachet, serif;
+    font-size: 24px;
+    color: #0089d0;
+    text-decoration: none;
+
+    transition: 0.25s;
+}
+
+.nav-dtp-name:hover {
+    color: white;
+    transition: 0.25s;
+}
+
+.nav-dtp-name-button {
+    margin-left: 8px;
+    margin-right: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    padding-left: 8px;
+    padding-right: 8px;
+    background-color: white;
+    border-radius: 12px;
+    transition: 0.25s;
+}
+
+.nav-dtp-name-button:hover {
+    transform: translateY(-2px);
+    background-color: #0089d0;
+    box-shadow: 0 4px 6px #cacaca;
+    border-radius: 12px;
+    transition: 0.25s;
+}
+
+.nav-dtp-logout {
+    font-family: cachet, serif;
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+
+    transition: 0.25s;
+}
+
+.nav-dtp-logout-button {
+    margin-left: 8px;
+    margin-right: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    padding-left: 12px;
+    padding-right: 12px;
+    background-color: #0089d0;
+    border-radius: 12px;
+    transition: 0.25s;
+}
+
+.nav-dtp-logout-button:hover {
+    transform: translateY(-2px);
+    background-color: #f15922;
+    box-shadow: 0 4px 6px #cacaca;
+    border-radius: 12px;
+    transition: 0.25s;
+}
+
+
+/*-----------------------*/
+/*MOBILE NAVBAR CSS BELOW*/
+/*-----------------------*/
+
+.nav-mbl-navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 176px;
+    width: 90%;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: white;
+}
+
+.nav-mbl-navbar-link {
+    height: 100%;
+}
+
+.nav-mbl-navbar-logo {
+    height: 100%;
+}
+
+.nav-mbl-hamburger-icon {
+    height: 70%;
+}
+
+.nav-mbl-hamburger-menu {
+    padding: 42px;
+    height: 100vh;
+    width: 100%;
+    max-width: 70%;
+    position: fixed;
+    right: calc(-70% - 112px);
+    top: 0;
+    background-color: white;
+    box-shadow: 0 0 36px #aeaeae;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    transition: 0.25s ease-in-out;
+
+}
+
+.nav-mbl-hamburger-menu.active {
+    right: 0;
+    transition: 0.25s ease-in-out;
+}
+
+.nav-mbl-hamburger-close {
+    width: 100%;
+    height: 112px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+}
+
+.nav-mbl-hamburger-close img {
+    height: 100%;
+}
+
+.nav-mbl-pages {
+    font-family: cachet, serif;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+
+    margin-top: 24px;
+    margin-bottom: 24px;
+
+    font-size: 64px;
+}
+
+.nav-mbl-points-button {
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    background-color: #fcaf17;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.nav-mbl-page-navigation {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    border-bottom: 8px solid gray;
+}
+
+.nav-mbl-login {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 112px;
+    margin-top: 24px;
+}
+
+.nav-mbl-login-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 50%;
+    height: 100%;
+    background-color: #0089d0;
+    border: 2px #0089d0 solid;
+    border-radius: 12px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.nav-mbl-login-button a {
+    font-family: cachet, serif;
+    color: #ffffff;
+    font-size: 64px;
+    text-decoration: none;
+}
+
+.nav-mbl-signup-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 50%;
+    height: 100%;
+    background-color: white;
+    border: 2px #0089d0 solid;
+    border-radius: 12px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.nav-mbl-signup-button a {
+    font-family: cachet, serif;
+    color: black;
+    font-size: 64px;
+    text-decoration: none;
+}
+
+.nav-mbl-user-info {
+    width: 100%;
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.nav-mbl-name-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.nav-mbl-name {
+    font-family: cachet, serif;
+    font-size: 64px;
+    color: #0089d0;
+    text-decoration: underline;
+    margin-bottom: 24px;
+}
+
+.nav-mbl-logout-button {
+    margin-top: 24px;
+    padding: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #0089d0;
+    border-radius: 12px;
+}
+
+.nav-mbl-logout {
+    font-family: cachet, serif;
+    font-size: 64px;
+    color: white;
+    text-decoration: none;
+}
