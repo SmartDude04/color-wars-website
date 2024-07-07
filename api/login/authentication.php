@@ -75,7 +75,7 @@ function confirm_session(): bool {
     $expire_days = 7;
 
     // Check for a session, then cookie triplet, then cookie double (problem), then return false
-    if (isset($_SESSION["auth"]) && $_SESSION["auth"] && isset($_SESSION["role"])) {
+    if (isset($_SESSION["auth"]) && $_SESSION["auth"] && isset($_SESSION["role"]) && isset($_SESSION["name"])) {
         // There is a session; no more info needed. Return true
         return true;
     } else if (isset($_COOKIE["auth"])) {
@@ -128,11 +128,12 @@ function confirm_session(): bool {
             session_start();
             $_SESSION["auth"] = true;
 
-            // Get their role and store that as a session
+            // Get their role && username and store that as a session
             $user_result = $conn->execute_query("SELECT usr_id FROM users WHERE usr_name = '$username'");
             $usr_id = $user_result->fetch_assoc()["usr_id"];
             $role_result = $conn->execute_query("SELECT rl_role FROM roles WHERE rl_usr_id = '$usr_id'");
             $_SESSION["role"] = mysqli_fetch_assoc($role_result)["rl_role"];
+            $_SESSION["name"] = $username;
 
             // Validate that all was successful and the user is confirmed logged in
             return true;
@@ -204,10 +205,11 @@ function login($username, $password): bool {
         session_start();
         $_SESSION["auth"] = true;
 
-        // Get their role and store that as a session
+        // Get their role && username and store that as a session
         $usr_id = $row["usr_id"];
         $role_result = $conn->execute_query("SELECT rl_role FROM roles WHERE rl_usr_id = '$usr_id'");
         $_SESSION["role"] = mysqli_fetch_assoc($role_result)["rl_role"];
+        $_SESSION["name"] = $username;
 
         // Confirm the login was successful
         return true;
