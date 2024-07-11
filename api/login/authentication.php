@@ -3,10 +3,10 @@
 use Random\RandomException;
 
 function db_connect(): mysqli {
-    $file = yaml_parse_file("../../config/sql.yaml");
+    // $file = yaml_parse_file("../../config/sql.yaml");
     $hostname = "localhost";
-    $username = $file["username"];
-    $password = $file["password"];
+    $username = "root";
+    $password = "NsW284i^n95raK@Y%N4#";
     $database = "color-wars";
 
     return new mysqli($hostname, $username, $password, $database);
@@ -14,7 +14,7 @@ function db_connect(): mysqli {
 
 function logout(): bool {
     // Remove the session
-    if (isset($_SESSION["auth"])) {
+    if (isset($_SESSION["auth"]) || isset($_SESSION["role"]) || isset($_SESSION["name"])) {
         session_destroy();
     }
 
@@ -52,6 +52,9 @@ function new_user($username, $password, $role): bool | string {
     // Insert them into the database
     $conn->execute_query("INSERT INTO users (usr_name, usr_password) VALUES ('$username', '$password_hash')");
 
+    // Insert their username into the pending database
+    $conn->execute_query("INSERT INTO pending (pnd_usr_name) VALUES ('$username')");
+
     // Assign their role
     // Get the user ID
     $result = $conn->execute_query("SELECT usr_id FROM users WHERE usr_name = '$username'");
@@ -59,9 +62,6 @@ function new_user($username, $password, $role): bool | string {
 
     // Add to the database
     $conn->execute_query("INSERT INTO roles (rl_usr_id, rl_role) VALUES ('$usr_id', '$role')");
-
-    // Log them in
-    login($username, $password);
 
     // Return true for success
     return true;
@@ -125,7 +125,10 @@ function confirm_session(): bool {
             AND SHA2(sn_username, 256) = '$user_hash'");
 
             // Set up a session for the user
-            session_start();
+            if (session_status() == PHP_SESSION_NONE)
+            {
+                session_start();
+            }
             $_SESSION["auth"] = true;
 
             // Get their role && username and store that as a session
@@ -171,7 +174,7 @@ function confirm_session(): bool {
 /**
  * @throws RandomException
  */
-function login($username, $password): bool {
+function login($username, $password): bool | string{
     $expire_days = 7;
 
     // Confirm the user is real
@@ -186,6 +189,14 @@ function login($username, $password): bool {
 
     if (mysqli_num_rows($result) == 1 && password_verify($password, $row["usr_password"])) {
 
+        // See if they are waiting for authentication
+        $pnd_result = $conn->execute_query("SELECT * FROM pending WHERE pnd_usr_name = '$username'");
+        if (mysqli_num_rows($pnd_result) > 0)
+        {
+            // User is pending approval; return that info
+            return "pending";
+        }
+
         // The user is real and the password is correct; continue to logging in and creating a cookie
         // Generate the info for a session row in the database and a cookie
         $series_identifier = bin2hex(random_bytes(32));
@@ -199,7 +210,7 @@ function login($username, $password): bool {
         setcookie("auth", $cookie_val, $expire, "/");
 
         // Generate a session record on a database
-        $conn->execute_query("INSERT INTO band_piano.sessions (sn_series_identifier, sn_session_token, sn_username, sn_expire) VALUES ('$series_identifier', '$session_token', '$username', '$expire')");
+        $conn->execute_query("INSERT INTO sessions (sn_series_identifier, sn_session_token, sn_username, sn_expire) VALUES ('$series_identifier', '$session_token', '$username', '$expire')");
 
         // Create a session
         session_start();
