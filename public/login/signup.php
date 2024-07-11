@@ -54,11 +54,11 @@ if (isset($_POST["submit"]) && isset($_POST["username"]) && isset($_POST["passwo
         <form method="post" action="" class="login-inputs">
             <h1 id="username-taken" class="pw-warning" style='visibility: <?php echo $un_taken ? "visible" : "hidden"; ?>;'>Username Taken</h1>
             <label>
-                <input value="<?php if (isset($_POST["username"])) {echo $_POST["username"];} ?>" type="text" required placeholder="New Username" class="text-field" name="username" id="un-field">
+                <input value="<?php if (isset($_POST["username"])) {echo $_POST["username"];} ?>" type="text" required placeholder="New Username" class="text-field <?php if($un_taken) {echo "incorrect-shake";} ?>" name="username" id="un-field">
             </label>
 
             <label>
-                <input value="<?php if (isset($_POST["password"])) {echo $_POST["password"];} ?>" type="password" required placeholder="New Password" class="text-field <?php if($retry) {echo "incorrect-shake";} ?>" name="password" id="pw-field">
+                <input value="<?php if (isset($_POST["password"])) {echo $_POST["password"];} ?>" type="password" required placeholder="New Password" class="text-field" name="password" id="pw-field">
             </label>
 
             <input type="submit" value="Sign Up" id="pw-submit" disabled="disabled" name="submit" class="login-button button-disabled">
