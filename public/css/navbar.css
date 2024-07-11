@@ -1,6 +1,13 @@
+.nav-dtp-navbar-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .nav-dtp-navbar {
-    width: 70%;
-    padding: 12px 15%;
+    width: min(100%, 1300px);
+    padding: 12px 0;
     height: 48px;
     background-color: white;
 
@@ -30,7 +37,6 @@
 }
 
 .nav-dtp-navigation {
-    width: 70%;
     height: 100%;
 
     display: flex;
@@ -41,8 +47,6 @@
 }
 
 .nav-dtp-login {
-
-    width: 30%;
     height: 100%;
 
     display: flex;
@@ -120,17 +124,18 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 40%;
     height: 80%;
-
     background-color: #0089d0;
     border: 2px #0089d0 solid;
     border-radius: 12px;
     margin-left: 8px;
     margin-right: 8px;
-
     transition: 0.25s;
+}
 
+.nav-dtp-login-button a {
+    padding-left: 12px;
+    padding-right: 12px;
 }
 
 .nav-dtp-login-button:hover {
@@ -154,7 +159,6 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 40%;
     height: 80%;
 
     background-color: white;
@@ -165,6 +169,11 @@
 
     transition: 0.25s;
 
+}
+
+.nav-dtp-signup-button a {
+    padding-left: 12px;
+    padding-right: 12px;
 }
 
 .nav-dtp-signup-button:hover {
@@ -183,7 +192,6 @@
 }
 
 .nav-dtp-user-info {
-    width: 30%;
     height: 100%;
 
     display: flex;
@@ -222,7 +230,7 @@
 }
 
 .nav-dtp-name-button:hover {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
     background-color: #0089d0;
     box-shadow: 0 4px 6px #cacaca;
     border-radius: 12px;
@@ -433,7 +441,7 @@
     font-family: cachet, serif;
     font-size: 64px;
     color: #0089d0;
-    text-decoration: underline;
+    text-decoration: none;
     margin-bottom: 24px;
 }
 
