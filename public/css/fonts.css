@@ -1,10 +1,5 @@
 @font-face {
     font-family: cachet;
-    src: url("../../fonts/Cachet Std Medium.otf");
-}
-
-@font-face {
-    font-family: cachet;
     src: url("../../fonts/Cachet Std Bold.otf");
     font-weight: bold;
 }
