@@ -1,0 +1,175 @@
+@media (orientation: landscape) {
+    .team-name {
+        font-size: 72px;
+        margin: 8px 0 0;
+    }
+
+    .team-groups {
+        font-size: 18px;
+        margin: 0 0 12px;
+    }
+
+    .points {
+        font-size: 96px;
+    }
+
+
+    .groups-container {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        width: calc(100% - 32px);
+        gap: 16px;
+        padding: 16px 16px 128px;
+    }
+
+    .group-container {
+        padding-bottom: 20px;
+        border-radius: 16px;
+    }
+
+    .group-container:hover {
+        cursor: default;
+    }
+
+    .team-and-groups {
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+    }
+}
+
+@media (orientation: portrait) {
+    .team-name {
+        font-size: 196px;
+        margin: 0;
+    }
+
+    .team-groups {
+        font-size: 48px;
+        margin: 0 0 24px;
+    }
+
+    .points {
+        font-size: 208px;
+    }
+
+
+    .groups-container {
+        grid-template-columns: 1fr;
+        width: calc(100% - 96px);
+        gap: 48px;
+        padding: 48px 48px 128px;
+    }
+
+    .group-container {
+        padding-bottom: 28px;
+        border-radius: 64px;
+        box-shadow: 0 6px 24px #a8a8a8;
+    }
+
+    .team-and-groups {
+        padding-top: 24px;
+        border-top-left-radius: 64px;
+        border-top-right-radius: 64px;
+    }
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0 0;
+    }
+
+    20% {
+        background-position: 100% 0;
+    }
+
+    40% {
+        background-position: 100% 100%;
+    }
+
+    60% {
+        background-position: 50% 50%;
+    }
+
+    80% {
+        background-position: 0 100%;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+
+html {
+    background-color: white;
+}
+
+body {
+    background-color: #a299ff;
+    background-image:
+    radial-gradient(at 5% 92%, hsla(149,97%,63%,1) 0px, transparent 50%),
+    radial-gradient(at 12% 52%, hsla(276,69%,77%,1) 0px, transparent 50%),
+    radial-gradient(at 88% 8%, hsla(40,98%,73%,1) 0px, transparent 50%),
+    radial-gradient(at 31% 22%, hsla(16,62%,62%,1) 0px, transparent 50%),
+    radial-gradient(at 16% 93%, hsla(344,87%,66%,1) 0px, transparent 50%),
+    radial-gradient(at 58% 84%, hsla(224,75%,65%,1) 0px, transparent 50%),
+    radial-gradient(at 58% 17%, hsla(160,92%,78%,1) 0px, transparent 50%);
+
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 500%;
+    animation: gradient 15s ease infinite;
+}
+
+.groups-container {
+    display: grid;
+}
+
+.group-container {
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: 0 1px 16px rgba(0, 0, 0, 0.1);
+}
+
+.group-container::after {
+    filter: blur(0px);
+}
+
+.team-and-groups {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 90%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.team-name {
+    font-family: cachet, serif;
+    text-align: center;
+    padding: 0;
+}
+
+.team-groups {
+    font-family: cachet, serif;
+    text-align: center;
+    padding: 0;
+}
+
+.points-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+}
+
+.points {
+    font-family: cachet, serif;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
