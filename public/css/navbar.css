@@ -1,5 +1,6 @@
 .nav-dtp-navbar-container {
     width: 100%;
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,7 +10,6 @@
     width: min(100%, 1300px);
     padding: 12px 0;
     height: 48px;
-    background-color: white;
 
     flex-direction: row;
     justify-content: space-between;
