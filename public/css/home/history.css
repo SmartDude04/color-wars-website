@@ -1,0 +1,160 @@
+@media (orientation: landscape) {
+    .team-header {
+        width: 15%;
+    }
+
+    .date-header {
+        width: 25%;
+    }
+
+    .group-header {
+        width: 20%;
+    }
+
+    .user-header {
+        width: 20%;
+    }
+
+    .edit-header {
+        width: 5%;
+    }
+
+    .edit-cell {
+        padding: 0;
+    }
+
+    td a {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    td a img {
+        height: 24px;
+    }
+
+    th, td {
+        font-family: cachet, serif;
+        font-size: 24px;
+    }
+
+    td {
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+}
+
+@media (orientation: portrait) {
+    .mobile-disabled {
+        display: none;
+    }
+
+    .team-header {
+        width: 37%;
+    }
+
+    .edit-header {
+        width: 13%;
+    }
+
+    .edit-cell {
+        padding: 0;
+    }
+
+    td a {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    td a img {
+        height: 64px;
+    }
+
+    th, td {
+        font-family: cachet, serif;
+        font-size: 48px;
+    }
+
+    td {
+        padding-top: 24px;
+        padding-bottom: 24px;
+    }
+}
+
+body {
+    background-color:#99fffa;
+    background-image:
+    radial-gradient(at 17% 52%, hsla(340,80%,64%,1) 0px, transparent 50%),
+    radial-gradient(at 8% 4%, hsla(343,64%,72%,1) 0px, transparent 50%),
+    radial-gradient(at 36% 60%, hsla(319,80%,67%,1) 0px, transparent 50%),
+    radial-gradient(at 21% 79%, hsla(144,79%,74%,1) 0px, transparent 50%),
+    radial-gradient(at 71% 71%, hsla(270,99%,62%,1) 0px, transparent 50%),
+    radial-gradient(at 79% 0%, hsla(244,92%,77%,1) 0px, transparent 50%),
+    radial-gradient(at 14% 39%, hsla(53,65%,75%,1) 0px, transparent 50%);
+}
+
+.history-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.history-table {
+    box-shadow: 0 0 16px rgba(90, 90, 90, 0.5);
+    border-radius: 16px;
+    margin-top: 64px;
+    width: 90%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.history-table-header {
+    background-color: rgba(0, 174, 239, 1) !important;
+    border-top-left-radius: 16px;
+}
+
+.top-left {
+    border-top-left-radius: 16px;
+}
+
+.top-right {
+    border-top-right-radius: 16px;
+}
+
+th, td {
+    text-align: left;
+    padding-left: 32px;
+}
+
+th {
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+tr:nth-child(odd) {
+    background-color: rgba(234, 234, 234, 0.9);
+}
+
+tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+tr:last-child td:first-child {
+    border-bottom-left-radius: 16px;
+}
+
+tr:last-child td:last-child {
+    border-bottom-right-radius: 16px;
+}
+
+tr:first-child th:first-child {
+    border-top-left-radius: 16px;
+}
+
+tr:first-child th:last-child {
+    border-top-right-radius: 16px;
+}
