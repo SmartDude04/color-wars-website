@@ -12,16 +12,16 @@
     </div>-->
 
     <?php
-    require_once "../api/groups/group-arrays.php";
-    require_once "../api/groups/colors.php";
+    require_once "../api/teams/team-arrays.php";
+    require_once "../api/teams/colors.php";
 
     // Get and generate team group containers for each team
 
-    $teams = get_group_arrays();
+    $teams = get_team_arrays();
 
     foreach ($teams as $team) {
 
-        // Get the string of all groups
+        // Get the string of all teams
         $groups = "";
         foreach ($team['groups'] as $group) {
             $groups .= $group . ", ";
