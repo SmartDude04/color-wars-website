@@ -9,6 +9,8 @@ try {
         exit();
     }
 } catch (\Random\RandomException $e) {
+    header("location: ../index.php");
+    exit();
 }
 
 // Check if the user has saved data; if so, update/create it in the database
