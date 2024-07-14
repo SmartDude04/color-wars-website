@@ -1,0 +1,133 @@
+@media (orientation: landscape) {
+    .teams-container {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        width: calc(100% - 32px);
+        gap: 16px;
+        padding: 16px 16px 128px;
+    }
+
+    .team-name {
+        font-size: 32px;
+    }
+
+    .edit-link {
+        height: 48px;
+    }
+
+    .add-background {
+        margin-top: 16px;
+        width: calc(100% - 32px);
+    }
+
+    .add-team-link {
+        font-size: 32px;
+        transition: 0.25s;
+    }
+
+    .add-team-link:hover {
+        transform: translateY(-2px);
+        background-color: #0060af;
+        box-shadow: 0 4px 6px #cacaca;
+        color: white;
+        transition: 0.25s;
+    }
+}
+
+@media (orientation: portrait) {
+    .teams-container {
+        grid-template-columns: 1fr;
+        width: calc(100% - 96px);
+        gap: 48px;
+        padding: 48px 48px 128px;
+    }
+
+    .team-name {
+        font-size: 96px;
+    }
+
+    .edit-link {
+        height: 96px;
+    }
+
+    .add-background {
+        margin-top: 48px;
+        width: calc(100% - 96px);
+    }
+
+    .add-team-link {
+        padding-top: 32px !important;
+        font-size: 72px;
+    }
+}
+
+.teams-container {
+    display: grid;
+}
+
+.team {
+    padding: 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.team-name {
+    padding: 0;
+    font-family: cachet, serif;
+    margin: 0;
+    padding-left: 32px;
+}
+
+.edit-link {
+    padding-right: 32px;
+}
+
+.edit-img {
+    height: 100%;
+}
+
+.add-team-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-background {
+    border-radius: 8px;
+    background-color: white;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.add-team-link {
+    font-family: cachet, serif;
+    color: black;
+    text-decoration: none;
+    border-radius: 8px;
+    background-color: #0089d0;
+    padding: 16px 32px;
+    margin: 16px 64px 16px 16px;
+
+}
+
+body {
+    background-color: white;
+    background-image:
+    radial-gradient(at 0% 44%, hsla(127,86%,74%,1) 0px, transparent 50%),
+    radial-gradient(at 58% 48%, hsla(213,91%,71%,1) 0px, transparent 50%),
+    radial-gradient(at 46% 10%, hsla(288,60%,60%,1) 0px, transparent 50%),
+    radial-gradient(at 27% 21%, hsla(254,64%,71%,1) 0px, transparent 50%),
+    radial-gradient(at 38% 98%, hsla(136,72%,73%,1) 0px, transparent 50%),
+    radial-gradient(at 58% 51%, hsla(351,72%,61%,1) 0px, transparent 50%),
+    radial-gradient(at 94% 44%, hsla(154,97%,65%,1) 0px, transparent 50%),
+    radial-gradient(at 95% 86%, hsla(337,69%,70%,1) 0px, transparent 50%),
+    radial-gradient(at 71% 21%, hsla(194,80%,64%,1) 0px, transparent 50%),
+    radial-gradient(at 27% 44%, hsla(163,70%,63%,1) 0px, transparent 50%),
+    radial-gradient(at 64% 2%, hsla(261,98%,66%,1) 0px, transparent 50%),
+    radial-gradient(at 20% 77%, hsla(280,78%,68%,1) 0px, transparent 50%);
+}
