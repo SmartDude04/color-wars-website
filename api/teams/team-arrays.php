@@ -16,7 +16,7 @@ function get_team_arrays(): array {
         $groups_arr = array();
 
         while ($row_group = $groups_result->fetch_assoc()) {
-            $groups_arr[] = ucfirst($row_group["grp_name"]);
+            $groups_arr[] = ucwords($row_group["grp_name"]);
         }
 
         $return_arr[array_key_last($return_arr)]["groups"] = $groups_arr;
