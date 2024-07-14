@@ -1,0 +1,246 @@
+@media (orientation: landscape) {
+    .edit-view {
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 32px 0;
+        width: min(95%, 1100px);
+        height: min(calc(90% - 64px), 600px);
+        border-radius: 16px;
+        box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .edit-form {
+        justify-content: space-evenly;
+    }
+
+    .header {
+        font-size: 64px;
+        padding: 0;
+        padding-bottom: 32px;
+        margin: 0;
+    }
+
+    .input-label {
+        font-size: 48px;
+        margin: 0;
+        padding: 0;
+        padding-bottom: 8px;
+    }
+
+    .input {
+        width: 50%;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        font-size: 32px;
+    }
+
+    .save-button {
+        margin-left: 16px;
+        width: 30%;
+        margin-top: 16px;
+        padding: 8px;
+        font-size: 32px;
+    }
+
+    .delete-button {
+        margin-right: 16px;
+        width: 30%;
+        margin-top: 16px;
+        padding: 8px;
+        font-size: 32px;
+    }
+
+    .buttons {
+        flex-direction: row;
+    }
+
+    .team-selector {
+        font-size: 24px;
+        border: 2px solid black;
+    }
+}
+
+@media (orientation: portrait) {
+    .edit-view {
+        background-color: white;
+        width: 100%;
+        height: 90%;
+        padding-top: 5vh;
+        padding-bottom: 5vh;
+    }
+
+    .edit-form {
+        justify-content: center;
+    }
+
+    .header {
+        font-size: 102px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .input-container {
+        padding-top: 64px;
+        padding-bottom: 64px;
+    }
+
+    .input-label {
+        font-size: 96px;
+        margin: 0;
+        padding: 0;
+        padding-bottom: 16px;
+    }
+
+    .input {
+        width: 90%;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        font-size: 64px;
+    }
+
+    .save-button {
+        width: 90%;
+        margin-top: 16px;
+        padding: 32px;
+        font-size: 64px;
+    }
+
+    .save-button {
+        width: 90%;
+        margin-top: 16px;
+        padding: 32px;
+        font-size: 64px;
+    }
+
+    .delete-button {
+        width: 90%;
+        margin-top: 16px;
+        padding: 32px;
+        font-size: 64px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .team-selector {
+        font-size: 64px;
+        border: 2px solid black;
+    }
+
+    .team-selector option {
+        font-size: 32px;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #ffffff;
+    background-image:
+    radial-gradient(at 58% 18%, hsla(137,92%,64%,1) 0px, transparent 50%),
+    radial-gradient(at 64% 32%, hsla(181,96%,74%,1) 0px, transparent 50%),
+    radial-gradient(at 39% 48%, hsla(290,68%,62%,1) 0px, transparent 50%),
+    radial-gradient(at 24% 26%, hsla(237,87%,76%,1) 0px, transparent 50%),
+    radial-gradient(at 82% 39%, hsla(165,80%,63%,1) 0px, transparent 50%),
+    radial-gradient(at 38% 91%, hsla(18,88%,78%,1) 0px, transparent 50%),
+    radial-gradient(at 43% 23%, hsla(324,90%,65%,1) 0px, transparent 50%);
+}
+
+.edit-view {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.header {
+    font-family: cachet, serif;
+    text-decoration: underline;
+}
+
+.edit-form {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-family: cachet, serif;
+}
+
+.input {
+    font-family: cachet, serif;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 8px;
+}
+
+.save-button {
+    background-color: #0089d0;
+
+}
+
+.save-button:enabled:hover {
+    background-color: #0060af;
+}
+
+.save-button:disabled {
+    background-color: #9a9a9a;
+    cursor: not-allowed;
+}
+
+.delete-button {
+    background-color: #d14248;
+}
+
+.delete-button:hover {
+    background-color: #a92b31;
+}
+
+.button {
+    font-family: cachet, serif;
+    border-radius: 8px;
+    border: none;
+    color: black;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.button:hover {
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    transition: 0.25s;
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.team-selector {
+    font-family: cachet, serif;
+    background-color: white;
+    padding: 8px;
+    border-radius: 8px;
+}
