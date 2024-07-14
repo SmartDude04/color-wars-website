@@ -52,7 +52,7 @@ if (isset($_GET["id"])) {
 </head>
 <body>
 
-<script src="save.js" defer></script>
+<script src="scripts.js" defer></script>
 <div class="container">
     <div class="edit-view">
         <h1 class="header">Edit/Add Team</h1>
