@@ -11,7 +11,7 @@ function get_points_history(): array {
                                     JOIN teams ON pts_tm_id = tm_id
                                     JOIN `groups` ON pts_grp_id = grp_id
                                     JOIN users ON pts_usr_id = usr_id
-                                    ORDER BY `pts_timestamp`");
+                                    ORDER BY `pts_timestamp` DESC");
 
     $return_array = array();
 
