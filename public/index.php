@@ -45,10 +45,10 @@ require_once "../api/login/authentication.php";
                             echo "<a href='index.php?page=teams'>Teams</a>";
                             echo "<a href='index.php?page=groups'>Groups</a>";
 
-                            echo "<div  class='nav-dtp-points-button'><a href='index.php?page=add-points'>Add Points</a></div>";
+                            echo "<div  class='nav-dtp-points-button'><a href='add-points/index.php'>Add Points</a></div>";
                         }
                         if ($_SESSION["role"] == 1) {
-                            echo "<div  class='nav-dtp-points-button'><a href='index.php?page=add-points'>Add Points</a></div>";
+                            echo "<div  class='nav-dtp-points-button'><a href='add-points/index.php'>Add Points</a></div>";
                         }
                     }
                 } catch (RandomException $e) {
@@ -104,10 +104,10 @@ require_once "../api/login/authentication.php";
                         echo "<a class='nav-mbl-pages' href='index.php?page=teams'>Teams</a>";
                         echo "<a class='nav-mbl-pages' href='index.php?page=groups'>Groups</a>";
 
-                        echo "<div  class='nav-mbl-points-button'><a href='index.php?page=add-points' class='nav-mbl-pages'>Add Points</a></div>";
+                        echo "<div  class='nav-mbl-points-button'><a href='add-points/index.php' class='nav-mbl-pages'>Add Points</a></div>";
                     }
                     if ($_SESSION["role"] == 1) {
-                        echo "<div  class='nav-mbl-points-button'><a href='index.php?page=add-points' class='nav-mbl-pages'>Add Points</a></div>";
+                        echo "<div  class='nav-mbl-points-button'><a href='add-points/index.php' class='nav-mbl-pages'>Add Points</a></div>";
                     }
                 }
             } catch (RandomException $e) {

@@ -54,7 +54,7 @@
 
             // If the user has high enough perms, show them the edit button
             if ($admin) {
-                echo "<td class='edit-cell'><a href='edit-history/edit.php?id=" . $row["pts_id"] . "'><img src='img/edit.png' onmouseover='this.src=`img/edit-hover.png`' onmouseout='this.src=`img/edit.png`' alt='Edit'></a></td>";
+                echo "<td class='edit-cell'><a href='add-points/index.php?id=" . $row["pts_id"] . "'><img src='img/edit.png' onmouseover='this.src=`img/edit-hover.png`' onmouseout='this.src=`img/edit.png`' alt='Edit'></a></td>";
             }
 
             echo "</tr>";
