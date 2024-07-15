@@ -5,7 +5,7 @@ require_once "../api/login/authentication.php";
 function get_team_arrays(): array {
     $conn = db_connect();
 
-    $result = $conn->query("SELECT tm_id, tm_name, SUM(pts_amount) AS `total`, tm_hex_color FROM teams JOIN points ON tm_id = pts_tm_id GROUP BY pts_tm_id");
+    $result = $conn->query("SELECT tm_id, tm_name, SUM(pts_amount) AS `total`, tm_hex_color FROM teams JOIN points ON tm_id = pts_tm_id GROUP BY pts_tm_id ORDER BY total DESC");
     $return_arr = array();
 
     while ($row = $result->fetch_assoc()) {
