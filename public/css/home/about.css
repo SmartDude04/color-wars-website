@@ -1,0 +1,72 @@
+@media (orientation: landscape) {
+    .text {
+        font-size: 24px;
+    }
+
+    .logo {
+        width: 50%;
+    }
+
+    .link {
+        font-size: 48px;
+    }
+}
+
+@media (orientation: portrait) {
+    .text {
+        font-size: 42px;
+    }
+
+    .logo {
+        width: 90%;
+    }
+
+    .link {
+        font-size: 64px;
+    }
+}
+
+body {
+    background-color: white;
+    background-image:
+    radial-gradient(at 0% 44%, hsla(127,86%,74%,1) 0px, transparent 50%),
+    radial-gradient(at 58% 48%, hsla(213,91%,71%,1) 0px, transparent 50%),
+    radial-gradient(at 46% 10%, hsla(288,60%,60%,1) 0px, transparent 50%),
+    radial-gradient(at 27% 21%, hsla(254,64%,71%,1) 0px, transparent 50%),
+    radial-gradient(at 38% 98%, hsla(136,72%,73%,1) 0px, transparent 50%),
+    radial-gradient(at 58% 51%, hsla(351,72%,61%,1) 0px, transparent 50%),
+    radial-gradient(at 94% 44%, hsla(154,97%,65%,1) 0px, transparent 50%),
+    radial-gradient(at 95% 86%, hsla(337,69%,70%,1) 0px, transparent 50%),
+    radial-gradient(at 71% 21%, hsla(194,80%,64%,1) 0px, transparent 50%),
+    radial-gradient(at 27% 44%, hsla(163,70%,63%,1) 0px, transparent 50%),
+    radial-gradient(at 64% 2%, hsla(261,98%,66%,1) 0px, transparent 50%),
+    radial-gradient(at 20% 77%, hsla(280,78%,68%,1) 0px, transparent 50%);
+}
+
+.view {
+    width: 100%;
+    height: calc(100vh - 72px);
+    background-color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.logo {
+    margin-top: 64px;
+    background-color: white;
+    border-radius: 32px;
+    box-shadow: 0 0 18px #888888;
+}
+
+.text {
+    padding-left: 5vw;
+    padding-right: 5vw;
+    font-family: cachet, serif;
+}
+
+.link {
+    color: blue;
+    text-decoration: underline;
+}
