@@ -11,5 +11,7 @@ window.onload = function() {
 
 function verifyUser(pnd_usr_name) {
     fetch(`../api/users/verify-user.php?name=${pnd_usr_name}`);
-    location.reload();
+    setTimeout(() => {
+        location.reload();
+    }, 100);
 }
