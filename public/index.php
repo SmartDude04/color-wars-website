@@ -62,9 +62,7 @@ require_once "../api/login/authentication.php";
             if (confirm_session()) {
                 ?>
                 <div class="nav-dtp-user-info">
-                    <div class="nav-dtp-name-button">
-                        <a href="login/user-info.php" class="nav-dtp-name"><?php echo $_SESSION["name"]; ?></a>
-                    </div>
+                    <h1 class="nav-dtp-name"><?php echo $_SESSION["name"]; ?></h1>
                     <div class="nav-dtp-logout-button">
                         <a href="login/logout.php" class="nav-dtp-logout">Log Out</a>
                     </div>
@@ -120,7 +118,7 @@ require_once "../api/login/authentication.php";
             if (confirm_session()) {
                 ?>
                 <div class="nav-mbl-user-info">
-                    <a href="login/user-info.php" class="nav-mbl-name"><?php echo $_SESSION["name"]; ?></a>
+                    <h1 class="nav-mbl-name"><?php echo $_SESSION["name"]; ?></h1>
                     <div class="nav-mbl-logout-button">
                         <a href="login/logout.php" class="nav-mbl-logout">Log Out</a>
                     </div>
