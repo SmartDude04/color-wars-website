@@ -30,17 +30,29 @@ function update_points($id, $team, $group, $amount): void {
     $conn = db_connect();
     $usr_id = $_SESSION['id'];
 
+    if (!(is_numeric($id) && is_numeric($team) && is_numeric($group) && is_numeric($amount))) {
+        return;
+    }
+
     $conn->query("UPDATE points SET pts_tm_id = '$team', pts_grp_id = '$group', pts_timestamp = CURRENT_TIMESTAMP(), pts_usr_id = $usr_id, pts_amount = '$amount' WHERE pts_id = '$id'");
 }
 
 function delete_points($id): void {
     $conn = db_connect();
 
+    if (!(is_numeric($id))) {
+        return;
+    }
+
     $conn->query("DELETE FROM points WHERE pts_id = '$id'");
 }
 
 function get_points_info($id): array {
     $conn = db_connect();
+
+    if (!(is_numeric($id))) {
+        return;
+    }
 
     $result = $conn->query("SELECT pts_tm_id, pts_grp_id, pts_amount FROM points WHERE pts_id = '$id'");
     $return_arr = array();

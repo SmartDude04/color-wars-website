@@ -60,7 +60,8 @@ function new_user($username, $password, $role): bool | string {
     $result = $conn->execute_query("SELECT usr_id FROM users WHERE usr_name = '$username'");
     $usr_id = $result->fetch_assoc()["usr_id"];
 
-    // Add to the database
+    // Add role to the database
+    $role = $conn->real_escape_string($role);
     $conn->execute_query("INSERT INTO roles (rl_usr_id, rl_role) VALUES ('$usr_id', '$role')");
 
     // Return true for success
@@ -84,8 +85,9 @@ function confirm_session(): bool {
 
         $arr = explode("|", $_COOKIE["auth"]);
 
-        // If the length of the cookie array does not match what is expected, return false and stop verification
+        // If the length of the cookie array does not match what is expected, delete the cookie, return false, and stop verification
         if (count($arr) != 3) {
+            setcookie("auth", "", time() - 3600, "/");
             return false;
         }
 

@@ -3,6 +3,10 @@
 $usr_id = $_GET["usr-id"];
 $new_role = $_GET["role-id"];
 
+if (!is_numeric($usr_id)) {
+    exit();
+}
+
 require_once "../login/authentication.php";
 $conn = db_connect();
 $new_role = $conn->real_escape_string($new_role);
