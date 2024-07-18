@@ -15,6 +15,10 @@ function get_existing_group($id): array {
 function update_existing_group($id, $name, $team): void {
     $conn = db_connect();
 
+    if (!is_numeric($id)) {
+        return;
+    }
+
     // Prevent SQL injection with $name and $team
     $name = $conn->real_escape_string($name);
     $team = $conn->real_escape_string($team);
@@ -34,6 +38,10 @@ function create_new_group($name, $team): void {
 
 function delete_existing_group($id): void {
     $conn = db_connect();
+
+    if (!is_numeric($id)) {
+        return;
+    }
 
     // Delete points entries with the group id
     $conn->query("DELETE FROM `points` WHERE pts_grp_id = '$id'");
