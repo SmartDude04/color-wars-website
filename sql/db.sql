@@ -1,4 +1,6 @@
-CREATE DATABASE `color-wars`;
+CREATE DATABASE IF NOT EXISTS `color-wars`;
+
+USE `color-wars`;
 
 create table pending
 (
