@@ -35,6 +35,9 @@ function create_new_group($name, $team): void {
 function delete_existing_group($id): void {
     $conn = db_connect();
 
+    // Delete points entries with the group id
+    $conn->query("DELETE FROM `points` WHERE pts_grp_id = '$id'");
+
     $conn->query("DELETE FROM `groups` WHERE grp_id = '$id'");
 }
 
