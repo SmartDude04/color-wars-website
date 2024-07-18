@@ -47,11 +47,11 @@ function delete_points($id): void {
     $conn->query("DELETE FROM points WHERE pts_id = '$id'");
 }
 
-function get_points_info($id): array {
+function get_points_info($id): null | array {
     $conn = db_connect();
 
     if (!(is_numeric($id))) {
-        return;
+        return null;
     }
 
     $result = $conn->query("SELECT pts_tm_id, pts_grp_id, pts_amount FROM points WHERE pts_id = '$id'");
