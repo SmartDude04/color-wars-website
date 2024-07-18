@@ -31,24 +31,29 @@ create table `groups`
         foreign key (grp_tm_id) references teams (tm_id)
 );
 
-create table points
-(
-    pts_timestamp datetime not null,
-    pts_tm_id     int      not null,
-    pts_grp_id    int      not null,
-    pts_amount    int      not null,
-    constraint points_groups_grp_id_fk
-        foreign key (pts_grp_id) references `groups` (grp_id),
-    constraint points_teams_tm_id_fk
-        foreign key (pts_tm_id) references teams (tm_id)
-);
-
 create table users
 (
     usr_id       int auto_increment
         primary key,
     usr_name     varchar(32)  not null,
     usr_password varchar(256) not null
+);
+
+create table points
+(
+    pts_timestamp datetime not null,
+    pts_tm_id     int      not null,
+    pts_grp_id    int      null,
+    pts_amount    int      not null,
+    pts_usr_id    int      null,
+    pts_id        int auto_increment
+        primary key,
+    constraint points_groups_grp_id_fk
+        foreign key (pts_grp_id) references `groups` (grp_id),
+    constraint points_teams_tm_id_fk
+        foreign key (pts_tm_id) references teams (tm_id),
+    constraint points_users_usr_id_fk
+        foreign key (pts_usr_id) references users (usr_id)
 );
 
 create table roles
@@ -58,3 +63,4 @@ create table roles
     constraint roles_users_usr_id_fk
         foreign key (rl_usr_id) references users (usr_id)
 );
+
