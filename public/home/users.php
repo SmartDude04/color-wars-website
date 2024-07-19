@@ -13,11 +13,23 @@ require_once "../api/users/get-users.php";
 
         $pending = get_pending_users();
 
-        foreach ($pending as $user) {
+        for ($i = 0; $i < count($pending); $i++) {
+            $user = $pending[$i];
+            $last = $i + 1 == count($pending);
             $name = $user['pnd_usr_name'];
             echo "<tr>";
-            echo "<td>$name</td>";
-            echo "<td><button onclick='verifyUser(\"$name\")'>Verify</button></td>";
+
+            if ($last) {
+                echo "<td class='bottom-left'>$name</td>";
+            } else {
+                echo "<td>$name</td>";
+            }
+
+            if ($last) {
+                echo "<td class='bottom-right'><button onclick='verifyUser(\"$name\")'>Verify</button></td>";
+            } else {
+                echo "<td><button onclick='verifyUser(\"$name\")'>Verify</button></td>";
+            }
             echo "</tr>";
         }
 
@@ -39,21 +51,33 @@ require_once "../api/users/get-users.php";
 
         echo "<script>let user_ids = [];</script>";
 
-        foreach ($users as $user) {
+        for ($i = 0; $i < count($users); $i++) {
+            $user = $users[$i];
+            $last = $i + 1 == count($users);
             $usr_id = $user["usr_id"];
             $usr_name = $user["usr_name"];
             $usr_role_id = $user["rl_role"];
 
             echo "<tr>";
-            echo "<td>" . $usr_name . "</td>";
-            echo "<td><select id='$usr_id'>";
 
-            for ($i = 1; $i <= 2; $i++) {
-                $current_role = $i == 1 ? "User" : "Admin";
-                if ($i == $usr_role_id) {
-                    echo "<option selected value='$i'>" . $current_role . "</option>";
+            if ($last) {
+                echo "<td class='bottom-left'>" . $usr_name . "</td>";
+            } else {
+                echo "<td>" . $usr_name . "</td>";
+            }
+
+            if ($last) {
+                echo "<td class='bottom-right'><select id='$usr_id'>";
+            } else {
+                echo "<td><select id='$usr_id'>";
+            }
+
+            for ($j = 1; $j <= 2; $j++) {
+                $current_role = $j == 1 ? "User" : "Admin";
+                if ($j == $usr_role_id) {
+                    echo "<option selected value='$j'>" . $current_role . "</option>";
                 } else {
-                    echo "<option value='$i'>" . $current_role . "</option>";
+                    echo "<option value='$j'>" . $current_role . "</option>";
                 }
             }
 
