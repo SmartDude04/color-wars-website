@@ -39,22 +39,39 @@
 
         // Make each table row
 
-        foreach ($rows as $row) {
+        for ($i = 0; $i < count($rows); $i++) {
+            $row = $rows[$i];
+            $last = $i + 1 == count($rows);
             $admin = false;
             try {
                 $admin = confirm_session() && $_SESSION['role'] == 2;
             } catch (\Random\RandomException $e) {
             }
             echo "<tr>";
-            echo "<td>" . ucwords($row['team']) . "</td>";
+
+            if ($last) {
+                echo "<td class='bottom-left'>" . ucwords($row['team']) . "</td>";
+            } else {
+                echo "<td>" . ucwords($row['team']) . "</td>";
+            }
+
             echo "<td class='mobile-disabled'>" . $row['date'] . "</td>";
             echo "<td class='mobile-disabled'>" . ucwords($row['group']) . "</td>";
             echo "<td class='mobile-disabled'>" . ucwords($row['user']) . "</td>";
-            echo "<td>" . number_format($row['amount']) . "</td>";
+
+            if ($last && !$admin) {
+                echo "<td class='bottom-right'>" . number_format($row['amount']) . "</td>";
+            } else {
+                echo "<td>" . number_format($row['amount']) . "</td>";
+            }
 
             // If the user has high enough perms, show them the edit button
             if ($admin) {
-                echo "<td class='edit-cell'><a href='add-points/index.php?id=" . $row["pts_id"] . "'><img src='img/edit.png' onmouseover='this.src=`img/edit-hover.png`' onmouseout='this.src=`img/edit.png`' alt='Edit'></a></td>";
+                if ($last) {
+                    echo "<td class='edit-cell bottom-right'><a href='add-points/index.php?id=" . $row["pts_id"] . "'><img src='img/edit.png' onmouseover='this.src=`img/edit-hover.png`' onmouseout='this.src=`img/edit.png`' alt='Edit'></a></td>";
+                } else {
+                    echo "<td class='edit-cell'><a href='add-points/index.php?id=" . $row["pts_id"] . "'><img src='img/edit.png' onmouseover='this.src=`img/edit-hover.png`' onmouseout='this.src=`img/edit.png`' alt='Edit'></a></td>";
+                }
             }
 
             echo "</tr>";
