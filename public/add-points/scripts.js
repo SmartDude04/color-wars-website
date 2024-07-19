@@ -17,9 +17,15 @@ window.onload = function () {
         } else {
             document.getElementById('add').setAttribute("disabled", "disabled ");
         }
-    })
+    });
 
-
+    // If editing, the save button should automatically be working; run the check right when the page loads
+    let amountInput = document.getElementById("points-amount").value;
+    if (amountInput !== "") {
+        document.getElementById('add').removeAttribute("disabled");
+    } else {
+        document.getElementById('add').setAttribute("disabled", "disabled ");
+    }
 }
 
 function changeGroups(team) {
