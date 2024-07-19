@@ -51,6 +51,7 @@ if (isset($_POST["submit"]) && isset($_POST["username"]) && isset($_POST["passwo
 <div class="container">
     <div class="login-panel">
         <h1 class="login-main-text">Sign Up</h1>
+        <h1 class="login-description">If you are a counselor and need to manage portions of Color Wars (points, groups, teams, etc.), create an account to do so.</h1>
         <form method="post" action="" class="login-inputs">
             <h1 id="username-taken" class="pw-warning" style='visibility: <?php echo $un_taken ? "visible" : "hidden"; ?>;'>Username Taken</h1>
             <label>
