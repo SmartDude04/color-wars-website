@@ -2,17 +2,27 @@
     <table class="history-table">
 
         <tr class="history-table-header">
-            <th class="team-header">Team</th>
+            <th class="team-header top-left">Team</th>
             <th class="mobile-disabled date-header">Date/Time</th>
             <th class="mobile-disabled group-header">Group</th>
             <th class="mobile-disabled user-header">User</th>
-            <th class="amount-header">Amount</th>
             <?php
 
+            try {
+                if (confirm_session() && $_SESSION["role"] == 2) {
+                    echo "<th class='amount-header'>Amount</th>";
+                } else {
+                    echo "<th class='amount-header top-right'>Amount</th>";
+                }
+            } catch (\Random\RandomException $e) {
+            }
+            ?>
+
+            <?php
             // If the user is an admin, display the edit column header
             try {
                 if (confirm_session() && $_SESSION["role"] == 2) {
-                    echo "<th class='edit-header'></th>";
+                    echo "<th class='edit-header top-right'></th>";
                 }
             } catch (\Random\RandomException $e) {
             }
@@ -30,12 +40,19 @@
         for ($i = 0; $i < count($rows); $i++) {
             $row = $rows[$i];
             $last = $i + 1 == count($rows);
+            $desc = $row["description"] != "";
+            $darker = $i % 2 == 0;
             $admin = false;
             try {
                 $admin = confirm_session() && $_SESSION['role'] == 2;
             } catch (\Random\RandomException $e) {
             }
-            echo "<tr>";
+
+            if ($darker) {
+                echo "<tr class='darker'>";
+            } else {
+                echo "<tr>";
+            }
 
             if ($last) {
                 echo "<td class='bottom-left'>" . ucwords($row['team']) . "</td>";
@@ -64,6 +81,18 @@
 
             echo "</tr>";
 
+            // Add the description row below, if there is one for this entry
+            if ($desc) {
+                if ($darker) {
+                    echo "<tr class='darker'>";
+                } else {
+                    echo "<tr>";
+                }
+                echo "<td id='desc' class='description' colspan='6'>";
+                echo $row['description'];
+                echo "</td>";
+
+            }
         }
         ?>
 </div>

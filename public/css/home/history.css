@@ -1,3 +1,8 @@
+/* width */
+::-webkit-scrollbar {
+  width: 0;
+}
+
 @media (orientation: landscape) {
     .team-header {
         width: 15%;
@@ -43,6 +48,10 @@
         padding-top: 16px;
         padding-bottom: 16px;
     }
+
+    .description {
+        font-size: 18px;
+    }
 }
 
 @media (orientation: portrait) {
@@ -82,6 +91,10 @@
         padding-top: 24px;
         padding-bottom: 24px;
     }
+
+    .description {
+        font-size: 36px;
+    }
 }
 
 body {
@@ -115,6 +128,7 @@ body {
     width: 90%;
     border-collapse: collapse;
     border-spacing: 0;
+    margin-bottom: 64px;
 }
 
 .history-table-header {
@@ -143,15 +157,24 @@ th, td {
     padding-left: 32px;
 }
 
+tr {
+    background-color: rgba(255, 255, 255, 0.9)
+}
+
 th {
     padding-top: 24px;
     padding-bottom: 24px;
 }
 
-tr:nth-child(odd) {
+.darker {
     background-color: rgba(234, 234, 234, 0.9);
 }
 
-tr:nth-child(even) {
-    background-color: rgba(255, 255, 255, 0.9);
+.entry-desc {
+    padding-bottom: 0;
+}
+
+.description {
+    color: gray;
+    padding-top: 0;
 }

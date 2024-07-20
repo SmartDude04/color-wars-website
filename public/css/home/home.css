@@ -48,9 +48,9 @@
     }
 
     .points {
+        margin-top: 32px !important;
         font-size: 208px;
     }
-
 
     .groups-container {
         grid-template-columns: 1fr;
@@ -60,7 +60,7 @@
     }
 
     .group-container {
-        padding-bottom: 28px;
+        padding-bottom: 0;
         border-radius: 64px;
         box-shadow: 0 6px 24px #a8a8a8;
     }

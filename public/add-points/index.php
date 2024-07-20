@@ -13,12 +13,12 @@ try {
     exit();
 }
 
-if (isset($_POST["add"]) && isset($_POST["points-team"]) && isset($_POST["points-group"]) && isset($_POST["points-amount"])) {
+if (isset($_POST["add"]) && isset($_POST["points-team"]) && isset($_POST["points-group"]) && isset($_POST["points-amount"]) && isset($_POST["points-desc"])) {
     if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
-        update_points($_GET["id"], $_POST["points-team"], $_POST["points-group"], $_POST["points-amount"]);
+        update_points($_GET["id"], $_POST["points-team"], $_POST["points-group"], $_POST["points-amount"], $_POST["points-desc"]);
         header("location: ../index.php?page=history");
     } else {
-        add_points($_POST["points-team"], $_POST["points-group"], $_POST["points-amount"]);
+        add_points($_POST["points-team"], $_POST["points-group"], $_POST["points-amount"], $_POST["points-desc"]);
         header("location: ../index.php");
     }
     exit();
@@ -33,13 +33,14 @@ if (isset($_POST["delete"]) && isset($_GET["id"]) && is_numeric($_GET["id"])) {
 $selected_team = "";
 $selected_group = "";
 $amount = 0;
+$description = "";
 
 if (isset($_GET["id"])) {
     $selections = get_points_info($_GET["id"]);
-
     $selected_team = $selections["pts_tm_id"];
     $selected_group = $selections["pts_grp_id"];
     $amount = $selections["pts_amount"];
+    $description = $selections["pts_description"];
 }
 
 ?>
@@ -92,6 +93,11 @@ if ($selected_group !== "") {
             <div class="selection-container">
                 <label for="points-amount" class="points-label">Amount</label>
                 <input type="number" value="<?php echo $amount !== 0 ? $amount : "";?>" required name="points-amount" id="points-amount" class="points-input">
+            </div>
+
+            <div class="selection-container">
+                <label for="points-desc" class="points-label">Description (Optional)</label>
+                <input type="text" value="<?php echo $description != "" ? $description : "";?>" name="points-desc" id="points-desc" class="points-input desc-input">
             </div>
 
             <div class="buttons">

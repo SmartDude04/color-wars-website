@@ -6,7 +6,7 @@ require_once "../api/history/get-points-history.php";
 function get_points_history(): array {
     $conn = db_connect();
 
-    $result = $conn->execute_query("SELECT pts_id, tm_name AS 'team', pts_timestamp AS 'date', grp_name AS 'group', usr_name AS 'user', pts_amount AS 'amount'
+    $result = $conn->execute_query("SELECT pts_id, tm_name AS 'team', pts_timestamp AS 'date', grp_name AS 'group', usr_name AS 'user', pts_amount AS 'amount', pts_description AS 'description'
                                     FROM `points`
                                     JOIN teams ON pts_tm_id = tm_id
                                     JOIN `groups` ON pts_grp_id = grp_id
