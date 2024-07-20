@@ -29,6 +29,18 @@
         transition: 0.25s;
         cursor: pointer;
     }
+
+    .username-col {
+        width: 50%;
+    }
+
+    .verify-col {
+        width: 25%;
+    }
+
+    .remove-col {
+        width: 25%;
+    }
 }
 
 @media (orientation: portrait) {
@@ -58,6 +70,18 @@
 
     button {
         font-size: 48px;
+    }
+
+    .username-col {
+        width: 45%;
+    }
+
+    .verify-col {
+        width: 25%;
+    }
+
+    .remove-col {
+        width: 30%;
     }
 }
 

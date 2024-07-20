@@ -5,8 +5,9 @@ require_once "../api/users/get-users.php";
 <div class="users-container">
     <table class="users-table">
         <tr class="header">
-            <th class="top-left">Username</th>
-            <th class="top-right">Verify</th>
+            <th class="top-left username-col">Username</th>
+            <th class="verify-col">Verify</th>
+            <th class="top-right remove-col">Remove</th>
         </tr>
 
         <?php
@@ -25,10 +26,12 @@ require_once "../api/users/get-users.php";
                 echo "<td>$name</td>";
             }
 
+            echo "<td><button onclick='verifyUser(\"$name\")'>Verify</button></td>";
+
             if ($last) {
-                echo "<td class='bottom-right'><button onclick='verifyUser(\"$name\")'>Verify</button></td>";
+                echo "<td class='bottom-right'><button onclick='removeUser(\"$name\")'>Remove</button></td>";
             } else {
-                echo "<td><button onclick='verifyUser(\"$name\")'>Verify</button></td>";
+                echo "<td><button onclick='removeUser(\"$name\")'>Remove</button></td>";
             }
             echo "</tr>";
         }
@@ -41,7 +44,7 @@ require_once "../api/users/get-users.php";
     <table class="users-table">
 
         <tr class="header">
-            <th class="top-left">Username</th>
+            <th class="top-left username-col">Username</th>
             <th class="top-right">Role</th>
         </tr>
 

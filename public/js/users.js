@@ -15,3 +15,10 @@ function verifyUser(pnd_usr_name) {
         location.reload();
     }, 100);
 }
+
+function removeUser(pnd_usr_name) {
+    fetch(`../api/users/remove-user.php?name=${pnd_usr_name}`);
+    setTimeout(() => {
+        location.reload();
+    }, 100);
+}
