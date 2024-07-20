@@ -17,14 +17,6 @@ try {
 </div>
 
 <div class="groups-container">
-    <!--<div class="group">
-        <div class="group-and-team">
-            <h1 class="group-name">Pathfinders</h1>
-            <h1 class="team-name">Blue</h1>
-        </div>
-        <a href="edit-groups/index.php" class="edit-link"><img src="img/edit.png" alt="Edit" onmouseover='this.src=`img/edit-hover.png`' onmouseout='this.src=`img/edit.png`' class="edit-img"></a>
-    </div>-->
-
     <?php
 
     require_once "../api/groups/display-groups.php";

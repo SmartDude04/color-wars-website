@@ -1,16 +1,4 @@
 <div class="groups-container">
-
-<!--    <div class="group-container" style="background-color: lightblue;">
-        <div class="team-and-groups">
-            <h1 class="team-name">RED</h1>
-            <h1 class="team-groups">Tennis, Pathfinders, Specialty, Arts Camp</h1>
-        </div>
-
-        <div class="points-container">
-            <h1 class="points">10,504</h1>
-        </div>
-    </div>-->
-
     <?php
     require_once "../api/teams/team-arrays.php";
     require_once "../api/teams/colors.php";

@@ -17,12 +17,6 @@ try {
 </div>
 
 <div class="teams-container">
-
-    <!--<div class="team">
-        <h1 class="team-name">Blue</h1>
-        <a href="edit-teams/index.php" class="edit-link"><img src="img/edit.png" alt="Edit" onmouseover='this.src=`img/edit-hover.png`' onmouseout='this.src=`img/edit.png`' class="edit-img"></a>
-    </div>-->
-
     <?php
 
     require_once "../api/teams/edit/display-teams.php";

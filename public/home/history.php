@@ -19,18 +19,6 @@
             ?>
 
         </tr>
-
-        <!--<tr>
-            <td>10</td>
-            <td class="mobile-disabled">10</td>
-            <td class="mobile-disabled">10</td>
-            <td class="mobile-disabled">10</td>
-            <td>10</td>
-            <td class="edit-cell">
-                <a href="edit/edit.php"><img src="img/edit.png" onmouseover="this.src='img/edit-hover.png'" onmouseout="this.src='img/edit.png'" alt="Edit"></a>
-            </td>
-        </tr>-->
-
         <?php
 
         require_once "../api/history/get-points-history.php";
