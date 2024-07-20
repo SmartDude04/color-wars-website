@@ -43,13 +43,14 @@ create table users
 
 create table points
 (
-    pts_timestamp datetime not null,
-    pts_tm_id     int      not null,
-    pts_grp_id    int      null,
-    pts_amount    int      not null,
-    pts_usr_id    int      null,
-    pts_id        int auto_increment
+    pts_id          int auto_increment
         primary key,
+    pts_timestamp   datetime     not null,
+    pts_tm_id       int          not null,
+    pts_grp_id      int          null,
+    pts_usr_id      int          null,
+    pts_amount      int          not null,
+    pts_description varchar(512) null,
     constraint points_groups_grp_id_fk
         foreign key (pts_grp_id) references `groups` (grp_id),
     constraint points_teams_tm_id_fk
