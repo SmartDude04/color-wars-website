@@ -6,10 +6,6 @@
     .logo {
         width: 50%;
     }
-
-    .link {
-        font-size: 48px;
-    }
 }
 
 @media (orientation: portrait) {
@@ -19,10 +15,6 @@
 
     .logo {
         width: 90%;
-    }
-
-    .link {
-        font-size: 64px;
     }
 }
 
