@@ -1,16 +1,11 @@
 <?php
 
-$usr_id = $_GET["usr-id"];
-$new_role = $_GET["role-id"];
+function edit_user($usr_id, $new_role): void {
+    if (!(is_numeric($usr_id) && is_numeric($new_role))) {
+        exit();
+    }
 
-if (!is_numeric($usr_id)) {
-    exit();
+    $conn = db_connect();
+
+    $conn->query("UPDATE `roles` SET `rl_role`='$new_role' WHERE `rl_usr_id`=$usr_id");
 }
-
-require_once "../login/authentication.php";
-$conn = db_connect();
-$new_role = $conn->real_escape_string($new_role);
-
-$conn->query("UPDATE `roles` SET `rl_role`='$new_role' WHERE `rl_usr_id`=$usr_id");
-
-exit();

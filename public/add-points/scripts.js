@@ -29,7 +29,7 @@ window.onload = function () {
 }
 
 function changeGroups(team) {
-    fetch(`../../api/points/get-groups.php?id=${team}`)
+    fetch(`../inter-api/get-groups.php?id=${team}&auth=${getAuthCookie()}`)
         .then (response => response.text())
         .then (data => {
             let groups = data;
@@ -55,4 +55,15 @@ function changeGroups(team) {
                 }
             }
         });
+}
+
+function getAuthCookie() {
+    let cookies = document.cookie.split(";");
+    let auth = "";
+    for (const cookie of cookies) {
+        if (cookie.indexOf("auth=") !== -1) {
+            auth = cookie.split("=")[1];
+        }
+    }
+    return auth;
 }
