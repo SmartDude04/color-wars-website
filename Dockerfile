@@ -4,6 +4,5 @@ RUN docker-php-ext-install mysqli
 
 COPY ./public /var/www/html
 COPY ./api /var/www/api
-COPY public/fonts /var/www/fonts
 
 EXPOSE 80
