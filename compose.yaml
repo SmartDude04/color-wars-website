@@ -11,7 +11,7 @@ services:
       - ./sql:/docker-entrypoint-initdb.d
     ports:
       - 3306:3306
-  httpd-apache:
+  httpd:
     build:
       context: ./
     depends_on:
@@ -19,8 +19,13 @@ services:
     environment:
       DB_HOSTNAME: 'mariadb'
       DB_PASSWORD: '7bwQ3tLQRtuMHyHBaTme'
+    volumes:
+      - ./ssl.conf:/etc/apache2/conf-enabled/ssl.conf
+      - ./privkey.pem:/etc/apache2/conf/privkey.pem
+      - ./fullchain.pem:/etc/apache2/conf/fullchain.pem
     ports:
       - 80:80
+      - 443:443
 
 volumes:
   database:
