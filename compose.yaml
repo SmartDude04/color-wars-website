@@ -5,7 +5,7 @@ services:
     image: mariadb
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: '7bwQ3tLQRtuMHyHBaTme'
+      MYSQL_ROOT_PASSWORD: '[PASSWORD HERE]'
     volumes:
       - database:/var/lib/mysql
       - ./sql:/docker-entrypoint-initdb.d
@@ -18,7 +18,7 @@ services:
       - mariadb
     environment:
       DB_HOSTNAME: 'mariadb'
-      DB_PASSWORD: '7bwQ3tLQRtuMHyHBaTme'
+      DB_PASSWORD: '[PASSWORD HERE]'
     volumes:
       - ./ssl.conf:/etc/apache2/conf-enabled/ssl.conf
       - ./privkey.pem:/etc/apache2/conf/privkey.pem
