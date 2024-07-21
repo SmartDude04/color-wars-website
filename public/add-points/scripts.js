@@ -47,7 +47,7 @@ function changeGroups(team) {
                 let id = groupParts[0];
                 let name = groupParts[1];
 
-                if (typeof selectedGroupId !== 'undefined' && selectedGroupId === id) {
+                if (typeof selectedGroupId !== 'undefined' && selectedGroupId.toString() === id) {
                         groupsSelector.innerHTML += `<option value='${id}' selected>${name}</option>`;
                         selectedGroupId = undefined;
                 } else {
