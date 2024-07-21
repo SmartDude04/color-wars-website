@@ -228,3 +228,28 @@ function login($username, $password): bool | string{
         return false;
     }
 }
+
+function api_auth($auth): bool {
+
+    $arr = explode("|", $auth);
+    if (count($arr) != 3) {
+        return false;
+    }
+
+    $conn = db_connect();
+    $series_identifier = $conn->real_escape_string($arr[0]);
+    $session_token = $conn->real_escape_string($arr[1]);
+    $user_hash = $conn->real_escape_string($arr[2]);
+
+    $result = $conn->execute_query("SELECT sn_username FROM sessions
+                                    WHERE sn_series_identifier = '$series_identifier'
+                                    AND sn_session_token = '$session_token'
+                                    AND SHA2(sn_username, 256) = '$user_hash'
+                                    AND sn_expire > UNIX_TIMESTAMP()");
+
+    if (mysqli_num_rows($result) == 1) {
+        return true;
+    }
+
+    return false;
+}
