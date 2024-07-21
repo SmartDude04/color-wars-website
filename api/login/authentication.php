@@ -3,10 +3,9 @@
 use Random\RandomException;
 
 function db_connect(): mysqli {
-    // $file = yaml_parse_file("../../config/sql.yaml");
-    $hostname = "localhost";
+    $hostname = getenv("DB_HOSTNAME") ? getenv("DB_HOSTNAME") : "localhost";
     $username = "root";
-    $password = "NsW284i^n95raK@Y%N4#";
+    $password = getenv("DB_PASSWORD") ? getenv("DB_PASSWORD") : "NsW284i^n95raK@Y%N4#";
     $database = "color-wars";
 
     return new mysqli($hostname, $username, $password, $database);
