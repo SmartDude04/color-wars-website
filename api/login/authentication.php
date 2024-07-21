@@ -28,9 +28,6 @@ function logout(): bool {
     return true;
 }
 
-/**
- * @throws RandomException
- */
 function new_user($username, $password, $role): bool | string {
     // Register the user in the database
 
