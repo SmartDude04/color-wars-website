@@ -9,6 +9,12 @@ if (session_status() == PHP_SESSION_NONE)
 }
 
 require_once "../api/login/authentication.php";
+$confirmed = false;
+try {
+    $confirmed = confirm_session();
+} catch (RandomException $e) {
+}
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -39,7 +45,7 @@ require_once "../api/login/authentication.php";
                 <a href="index.php?page=about">About</a>
                 <?php
                 try {
-                    if (confirm_session()) {
+                    if ($confirmed) {
                         if ($_SESSION["role"] == 2) {
                             echo "<a href='index.php?page=users'>Users</a>";
                             echo "<a href='index.php?page=teams'>Teams</a>";
@@ -59,7 +65,7 @@ require_once "../api/login/authentication.php";
 
         <?php
         try {
-            if (confirm_session()) {
+            if ($confirmed) {
                 ?>
                 <div class="nav-dtp-user-info">
                     <h1 class="nav-dtp-name"><?php echo $_SESSION["name"]; ?></h1>
@@ -96,7 +102,7 @@ require_once "../api/login/authentication.php";
             <a class="nav-mbl-pages" href="index.php?page=about">About</a>
             <?php
             try {
-                if (confirm_session()) {
+                if ($confirmed) {
                     if ($_SESSION["role"] == 2) {
                         echo "<a class='nav-mbl-pages' href='index.php?page=users'>Users</a>";
                         echo "<a class='nav-mbl-pages' href='index.php?page=teams'>Teams</a>";
@@ -115,7 +121,7 @@ require_once "../api/login/authentication.php";
 
         <?php
         try {
-            if (confirm_session()) {
+            if ($confirmed) {
                 ?>
                 <div class="nav-mbl-user-info">
                     <h1 class="nav-mbl-name"><?php echo $_SESSION["name"]; ?></h1>

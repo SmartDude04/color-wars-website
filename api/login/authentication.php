@@ -159,6 +159,7 @@ function confirm_session(): bool {
             // Possibly the database record was deleted before the cookie expired
 
             setcookie("auth", "", time() - 3600, "/");
+            setcookie("PHPSESSID", "", time() - 3600, "/");
 
             return false;
         }
