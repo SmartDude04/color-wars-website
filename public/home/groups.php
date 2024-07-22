@@ -6,6 +6,8 @@ try {
         exit();
     }
 } catch (\Random\RandomException $e) {
+    header("location:index.php");
+    exit();
 }
 
 ?>

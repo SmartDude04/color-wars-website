@@ -1,8 +1,5 @@
 <?php
 
-require_once "../api/history/get-points-history.php";
-
-
 function get_points_history(): array {
     $conn = db_connect();
 
