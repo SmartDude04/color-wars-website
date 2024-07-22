@@ -40,7 +40,7 @@ function update_points($id, $team, $group, $amount, $description): void {
     if (!strpos($description, "(Edited)")) {
         $description .= " (Edited)";
     }
-    $conn->query("UPDATE points SET pts_tm_id = '$team', pts_grp_id = '$group', pts_timestamp = CURRENT_TIMESTAMP(), pts_usr_id = $usr_id, pts_amount = '$amount', pts_description = '$description' WHERE pts_id = '$id'");
+    $conn->query("UPDATE points SET pts_tm_id = '$team', pts_grp_id = '$group', pts_usr_id = $usr_id, pts_amount = '$amount', pts_description = '$description' WHERE pts_id = '$id'");
 }
 
 function delete_points($id): void {
