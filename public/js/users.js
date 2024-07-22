@@ -4,7 +4,10 @@ window.onload = function() {
             let role_id = document.getElementById(id).value;
 
             // Send the data to change the user role
-            fetch(`inter-api/edit-user.php?usr-id=${id}&role-id=${role_id}&auth=${getAuthCookie()}`)
+            fetch(`inter-api/edit-user.php?usr-id=${id}&role-id=${role_id}&auth=${getAuthCookie()}`);
+            setTimeout(() => {
+                location.reload();
+            }, 100);
         });
     }
 }
