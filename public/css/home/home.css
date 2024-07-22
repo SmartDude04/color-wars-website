@@ -98,6 +98,10 @@
     }
 }
 
+::-webkit-scrollbar {
+  width: 0;
+}
+
 html {
     background-color: white;
 }
