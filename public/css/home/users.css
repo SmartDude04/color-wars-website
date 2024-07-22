@@ -1,3 +1,7 @@
+::-webkit-scrollbar {
+  width: 0;
+}
+
 @media (orientation: landscape) {
 
     .users-table {
@@ -119,6 +123,7 @@ body {
     margin-top: 64px;
     border-collapse: collapse;
     border-spacing: 0;
+    margin-bottom: 64px;
 }
 
 .header {
