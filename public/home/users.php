@@ -81,7 +81,11 @@ try {
                 echo "<td>" . $usr_name . "</td>";
             }
 
-            echo "<td><select id='$usr_id'>";
+            if ($usr_id == $_SESSION["id"]) {
+                echo "<td><select id='$usr_id' disabled>";
+            } else {
+                echo "<td><select id='$usr_id'>";
+            }
 
             for ($j = 1; $j <= 2; $j++) {
                 $current_role = $j == 1 ? "User" : "Admin";
