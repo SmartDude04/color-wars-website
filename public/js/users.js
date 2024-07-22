@@ -23,6 +23,15 @@ function removeUser(pnd_usr_name) {
     }, 100);
 }
 
+function deleteUser(usr_id) {
+    if (confirm("Are you sure you want to delete this user? Deleting the user will also delete any points they have added.")) {
+        fetch(`inter-api/delete-user.php?id=${usr_id}&auth=${getAuthCookie()}`);
+        setTimeout(() => {
+            location.reload();
+        }, 100);
+    }
+}
+
 function getAuthCookie() {
     let cookies = document.cookie.split(";");
     let auth = "";

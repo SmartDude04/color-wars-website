@@ -1,5 +1,14 @@
 <?php
 require_once "../api/users/get-users.php";
+
+try {
+    if (!(confirm_session() && $_SESSION["role"] == 2)) {
+        header("location:index.php");
+        exit();
+    }
+} catch (\Random\RandomException $e) {
+}
+
 ?>
 
 <div class="users-container">
@@ -45,7 +54,8 @@ require_once "../api/users/get-users.php";
 
         <tr class="header">
             <th class="top-left username-col">Username</th>
-            <th class="top-right">Role</th>
+            <th class="verify-col">Role</th>
+            <th class="top-right remove-col">Delete</th>
         </tr>
 
         <?php
@@ -69,11 +79,7 @@ require_once "../api/users/get-users.php";
                 echo "<td>" . $usr_name . "</td>";
             }
 
-            if ($last) {
-                echo "<td class='bottom-right'><select id='$usr_id'>";
-            } else {
-                echo "<td><select id='$usr_id'>";
-            }
+            echo "<td><select id='$usr_id'>";
 
             for ($j = 1; $j <= 2; $j++) {
                 $current_role = $j == 1 ? "User" : "Admin";
@@ -85,6 +91,21 @@ require_once "../api/users/get-users.php";
             }
 
             echo "</select></td>";
+
+            if ($usr_id != $_SESSION["id"]) {
+                if ($last) {
+                    echo "<td class='bottom-right'><button class='delete' onclick='deleteUser(\"$usr_id\")'>Delete</button></td>";
+                } else {
+                    echo "<td><button class='delete' onclick='deleteUser(\"$usr_id\")'>Delete</button></td>";
+                }
+            } else {
+                if ($last) {
+                    echo "<td class='bottom-right'></td>";
+                } else {
+                    echo "<td></td>";
+                }
+            }
+
             echo "</tr>";
 
             echo "<script>user_ids.push('$usr_id');</script>";

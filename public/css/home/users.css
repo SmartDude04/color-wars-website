@@ -41,6 +41,10 @@
     .remove-col {
         width: 25%;
     }
+
+    .delete:hover {
+        background-color: #e1484e !important;
+    }
 }
 
 @media (orientation: portrait) {
@@ -169,4 +173,8 @@ button {
     border-radius: 4px;
     border: 2px solid black;
     padding: 8px;
+}
+
+.delete {
+    background-color: #e17e82 !important;
 }
