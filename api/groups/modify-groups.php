@@ -52,7 +52,7 @@ function delete_existing_group($id): void {
 function get_teams_for_selector(): array {
     $conn = db_connect();
 
-    $result = $conn->query("SELECT tm_id, tm_name FROM teams");
+    $result = $conn->query("SELECT tm_id, tm_name FROM teams ORDER BY tm_name");
 
     $return_array = array();
     while ($row = $result->fetch_assoc()) {

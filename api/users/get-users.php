@@ -12,7 +12,7 @@ function get_users() {
         exit();
     }
 
-    $result = $conn->query("SELECT usr_id, usr_name, rl_role FROM `users` JOIN roles ON rl_usr_id = usr_id WHERE usr_name NOT IN (SELECT pnd_usr_name FROM pending) ");
+    $result = $conn->query("SELECT usr_id, usr_name, rl_role FROM `users` JOIN roles ON rl_usr_id = usr_id WHERE usr_name NOT IN (SELECT pnd_usr_name FROM pending) ORDER BY rl_role DESC");
 
     $return_arr = array();
     while ($row = $result->fetch_assoc()) {

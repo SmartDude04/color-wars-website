@@ -3,7 +3,7 @@
 function get_teams(): array {
     $conn = db_connect();
 
-    $result = $conn->query("SELECT tm_id, tm_name FROM teams");
+    $result = $conn->query("SELECT tm_id, tm_name FROM teams ORDER BY tm_name");
 
     $return_arr = array();
     while ($row = $result->fetch_assoc()) {

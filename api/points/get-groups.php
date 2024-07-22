@@ -9,7 +9,7 @@ function get_groups($team_id): ?string {
     // Get the id and the name of each group that works with this team
     $conn = db_connect();
 
-    $result = $conn->query("SELECT grp_id, grp_name FROM `groups` WHERE `grp_tm_id` = $team_id");
+    $result = $conn->query("SELECT grp_id, grp_name FROM `groups` WHERE `grp_tm_id` = $team_id ORDER BY grp_name");
 
     // Each group will be separated by a pipe | and each part of the group (id & name) will be separated by a tilde ~
     $return_str = "";
