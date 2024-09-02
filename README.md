@@ -10,13 +10,23 @@ I decided to create a website that would solve both the adding and viewing of po
 # Installation Instructions
 
 ### Prerequisites
-You must have docker installed on the machine with root (sudo) access
+You must have docker installed on the machine with root (sudo) access. I have only tested this on Ubuntu Server and
+Windows, but there shouldn't be a problem with other operating systems.
 
 ### Instructions
 1. Clone this repository to your machine
+
+#### If using SSL (HTTPS):
 2. Obtain SSL (HTTPS) certificates
    - You must get both the key and certificate
-3. Name the key file *privkey.pem* and the certificate file *fullchain.pem*, and place them in the main directory of the project (most likely color-wars-website)
-4. In *compose.yaml*, replace both **[PASSWORD HERE]** instances with your own password.
-5. In *ssl.conf*, replace **[SITE NAME HERE]** with your website domain name attached to the certificate
-6. Run ***docker compose up*** or ***docker compose up -d*** to run in detached mode
+3. Uncomment *all* commented lines in `compose.yaml` and `Dockerfile`
+   - This should be the volumes and ports 443 in the compose file and the command and port 443 in the dockerfile
+4. Name the key file *privkey.pem* and the certificate file *fullchain.pem*, and place them in the main directory of the project (most likely color-wars-website)
+5. In `compose.yaml`, replace both **[PASSWORD HERE]** instances with your own password.
+6. In `ssl.conf`, replace **[SITE NAME HERE]** with your website domain name attached to the certificate
+7. Run `docker compose up` or `docker compose up -d` to run in detached mode
+
+#### If *not* using SSL (HTTPS):
+2. In `compose.yaml`, replace both **[PASSWORD HERE]** instances with your own password.
+3. . In `ssl.conf`, replace **[SITE NAME HERE]** with your website domain name attached to the certificate
+4. Run `docker compose up` or `docker compose up -d` to run in detached mode
