@@ -28,5 +28,4 @@ Windows, but there shouldn't be a problem with other operating systems.
 
 #### If *not* using SSL (HTTPS):
 2. In `compose.yaml`, replace both **[PASSWORD HERE]** instances with your own password.
-3. . In `ssl.conf`, replace **[SITE NAME HERE]** with your website domain name attached to the certificate
-4. Run `docker compose up` or `docker compose up -d` to run in detached mode
+3. Run `docker compose up` or `docker compose up -d` to run in detached mode
