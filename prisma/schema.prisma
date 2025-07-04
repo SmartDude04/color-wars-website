@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Team {
+  id Int @id @default(autoincrement())
+  name String @unique
+  hexColor String
+  groups Group[]
+  points Point[]
+}
+
+model Group {
+  id Int @id @default(autoincrement())
+  name String @unique
+  team Team @relation(fields: [teamId], references: [id])
+  teamId Int
+  points Point[]
+}
+
+model Point {
+  id Int @id @default(autoincrement())
+  timestamp DateTime @default(now())
+  amount Int
+  description String?
+  team Team @relation(fields: [teamId], references: [id])
+  teamId Int
+  group Group @relation(fields: [groupId], references: [id])
+  groupId Int
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  username String @unique
+  password String
+  verified Boolean @default(false)
+  role String
+}
