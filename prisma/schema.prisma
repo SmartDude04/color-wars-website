@@ -13,7 +13,6 @@ model Team {
   name String @unique
   hexColor String
   groups Group[]
-  points Point[]
 }
 
 model Group {
@@ -29,8 +28,8 @@ model Point {
   timestamp DateTime @default(now())
   amount Int
   description String?
-  team Team @relation(fields: [teamId], references: [id])
-  teamId Int
+  user User @relation(fields: [userId], references: [id])
+  userId Int
   group Group @relation(fields: [groupId], references: [id])
   groupId Int
 }
@@ -41,4 +40,5 @@ model User {
   password String
   verified Boolean @default(false)
   role String @default("user")
+  points Point[]
 }
