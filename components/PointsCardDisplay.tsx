@@ -14,7 +14,6 @@ export default function PointsCardDisplay({ teamId }: Props) {
     useEffect(() => {
         const fetchPoints = async () => {
             const points = await getTeamPoints(teamId);
-            console.log(points);
             setPoints(points);
         }
 
