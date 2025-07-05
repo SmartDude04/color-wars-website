@@ -40,5 +40,5 @@ model User {
   username String @unique
   password String
   verified Boolean @default(false)
-  role String
+  role String @default("user")
 }
