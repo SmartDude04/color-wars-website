@@ -3,7 +3,11 @@ import TeamPointsCard from "@/components/TeamPointsCard";
 import styles from "./page.module.css";
 
 export default async function Page() {
-    const teams = await prisma.team.findMany();
+    const teams = await prisma.team.findMany({
+        orderBy: {
+            name: "asc"
+        }
+    });
 
     return (
         <div className={styles.bg}>

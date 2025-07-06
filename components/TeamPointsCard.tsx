@@ -1,5 +1,5 @@
 import { prisma } from "@/prisma";
-import PointsCardDisplay from "@/components/PointsCardDisplay";
+import PointsDisplay from "@/components/PointsDisplay";
 import styles from "@/app/page.module.css";
 import React from "react";
 
@@ -13,6 +13,9 @@ export default async function TeamPointsCard({ teamName, teamId, teamHexColor }:
     const groups = await prisma.group.findMany({
         where: {
             teamId: teamId
+        },
+        orderBy: {
+            name: "asc"
         }
     });
 
@@ -43,7 +46,7 @@ export default async function TeamPointsCard({ teamName, teamId, teamHexColor }:
                 <h2 className="w-full text-center text-xl sm:text-2xl">{groups.map(group => group.name).toString().replace(",", ", ")}</h2>
             </div>
             <div className="w-full flex flex-col pt-5 pb-5 backdrop-blur-xl rounded-b-xl bg-[rgba(255,255,255,0.15)]">
-                <PointsCardDisplay teamId={teamId} />
+                <PointsDisplay teamId={teamId} />
             </div>
         </div>
     );

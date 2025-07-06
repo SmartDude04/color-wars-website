@@ -2,13 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { getTeamPoints } from "@/app/actions";
-import PointsCardDisplayLoading from "@/components/PointsCardDisplayLoading";
+import PointsDisplayLoading from "@/components/PointsDisplayLoading";
 
 interface Props {
     teamId: number
 }
 
-export default function PointsCardDisplay({ teamId }: Props) {
+export default function PointsDisplay({ teamId }: Props) {
     const [points, setPoints] = useState<number | null>(null);
 
     useEffect(() => {
@@ -24,7 +24,7 @@ export default function PointsCardDisplay({ teamId }: Props) {
         points !== null ? (
             <h1 className="w-full text-center sm:text-8xl text-7xl">{points.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h1>
         ) : (
-            <PointsCardDisplayLoading />
+            <PointsDisplayLoading />
         )
     );
 }
