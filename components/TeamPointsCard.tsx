@@ -1,6 +1,6 @@
 import { prisma } from "@/prisma";
 import PointsDisplay from "@/components/PointsDisplay";
-import styles from "@/app/page.module.css";
+import "@/app/page.css";
 import React from "react";
 
 interface Props {
@@ -38,7 +38,7 @@ export default async function TeamPointsCard({ teamName, teamId, teamHexColor }:
 
     return (
         <div className="flex flex-col shadow-xl rounded-xl text-black">
-            <div className={`w-full flex flex-col pt-3 pb-3 rounded-t-xl ${styles.teamColorBg}`} style={{
+            <div className="w-full flex flex-col pt-3 pb-3 rounded-t-xl teamColorBg duration-200" style={{
                 "--dark-color": darkRgba,
                 "--light-color": rgba,
             } as React.CSSProperties}>

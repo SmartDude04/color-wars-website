@@ -48,38 +48,34 @@
     min-height: calc(100dvh - 72px);
 }
 
-@media (prefers-color-scheme: dark) {
-    .bg {
-        background-image:
-                radial-gradient(at 87% 4%, hsl(96, 88%, 29%) 0px, transparent 50%),
-                radial-gradient(at 93% 55%, hsl(14, 89%, 31%) 0px, transparent 50%),
-                radial-gradient(at 65% 30%, hsl(346, 63%, 29%) 0px, transparent 50%),
-                radial-gradient(at 55% 57%, hsl(123, 66%, 31%) 0px, transparent 50%),
-                radial-gradient(at 93% 99%, hsl(51, 84%, 31%) 0px, transparent 50%),
-                radial-gradient(at 21% 86%, hsl(311, 90%, 31%) 0px, transparent 50%),
-                radial-gradient(at 67% 87%, hsl(192, 92%, 31%) 0px, transparent 50%),
-                radial-gradient(at 35% 30%, hsl(175, 76%, 26%) 0px, transparent 50%),
-                radial-gradient(at 35% 12%, hsl(95, 89%, 32%) 0px, transparent 50%),
-                radial-gradient(at 46% 9%, hsl(343, 69%, 29%) 0px, transparent 50%),
-                radial-gradient(at 90% 6%, hsl(158, 72%, 28%) 0px, transparent 50%),
-                radial-gradient(at 34% 23%, hsl(90, 67%, 27%) 0px, transparent 50%),
-                radial-gradient(at 61% 26%, hsl(335, 88%, 30%) 0px, transparent 50%);
-
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: 500%;
-        animation: gradient 15s ease infinite;
-        width: 100%;
-        min-height: calc(100dvh - 72px);
-    }
-}
-
 .teamColorBg {
     background-color: var(--light-color);
 }
 
-@media (prefers-color-scheme: dark) {
-    .teamColorBg {
-        background-color: var(--dark-color);
-    }
+.teamColorBg:where(.dark, .dark *) {
+    background-color: var(--dark-color);
+}
+
+.bg:where(.dark, .dark *) {
+    background-image:
+            radial-gradient(at 87% 4%, hsl(96, 88%, 29%) 0px, transparent 50%),
+            radial-gradient(at 93% 55%, hsl(14, 89%, 31%) 0px, transparent 50%),
+            radial-gradient(at 65% 30%, hsl(346, 63%, 29%) 0px, transparent 50%),
+            radial-gradient(at 55% 57%, hsl(123, 66%, 31%) 0px, transparent 50%),
+            radial-gradient(at 93% 99%, hsl(51, 84%, 31%) 0px, transparent 50%),
+            radial-gradient(at 21% 86%, hsl(311, 90%, 31%) 0px, transparent 50%),
+            radial-gradient(at 67% 87%, hsl(192, 92%, 31%) 0px, transparent 50%),
+            radial-gradient(at 35% 30%, hsl(175, 76%, 26%) 0px, transparent 50%),
+            radial-gradient(at 35% 12%, hsl(95, 89%, 32%) 0px, transparent 50%),
+            radial-gradient(at 46% 9%, hsl(343, 69%, 29%) 0px, transparent 50%),
+            radial-gradient(at 90% 6%, hsl(158, 72%, 28%) 0px, transparent 50%),
+            radial-gradient(at 34% 23%, hsl(90, 67%, 27%) 0px, transparent 50%),
+            radial-gradient(at 61% 26%, hsl(335, 88%, 30%) 0px, transparent 50%);
+
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 500%;
+    animation: gradient 15s ease infinite;
+    width: 100%;
+    min-height: calc(100dvh - 72px);
 }

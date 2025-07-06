@@ -20,7 +20,11 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
     return (
         <html lang="en" className={cachetStdBold.className} suppressHydrationWarning>
             <body className="antialiased">
-                <ThemeProvider>
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="light"
+                    enableSystem={true}
+                >
                     <Navbar />
                     {children}
                 </ThemeProvider>
