@@ -37,7 +37,7 @@ export default async function TeamPointsCard({ teamName, teamId, teamHexColor }:
     const darkRgba = `rgba(${rgb.r * 0.7}, ${rgb.g * 0.7}, ${rgb.b * 0.7}, 0.7)`;
 
     return (
-        <div className="flex flex-col shadow-xl rounded-xl text-black dark:">
+        <div className="flex flex-col shadow-xl rounded-xl text-black">
             <div className={`w-full flex flex-col pt-3 pb-3 rounded-t-xl ${styles.teamColorBg}`} style={{
                 "--dark-color": darkRgba,
                 "--light-color": rgba,
