@@ -18,8 +18,10 @@ model Team {
 model Group {
   id String @id @default(cuid())
   name String @unique
+
   team Team @relation(fields: [teamId], references: [id])
   teamId String
+
   points Point[]
 }
 
@@ -28,8 +30,10 @@ model Point {
   timestamp DateTime @default(now())
   amount Int
   description String?
+
   user User @relation(fields: [userId], references: [id])
   userId String
+
   group Group @relation(fields: [groupId], references: [id])
   groupId String
 }
@@ -40,5 +44,9 @@ model User {
   password String
   verified Boolean @default(false)
   role String @default("user")
+
   points Point[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
