@@ -41,7 +41,7 @@ export default function MobileNavbarLinks() {
                     </div>
                 ) }
                 <Link href="/" className={linkStyles}>Home</Link>
-                { role === "user" ? (
+                { role === "admin" || role === "specialist" || role === "user" ? (
                     <Link href="/history" className={linkStyles}>History</Link>
                 ) : <></>}
                 <Link href="/about" className={linkStyles}>About</Link>
