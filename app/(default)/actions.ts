@@ -2,7 +2,7 @@
 
 import { prisma } from "@/prisma";
 
-export async function getTeamPoints(teamId: number) {
+export async function getTeamPoints(teamId: string) {
     const points = await prisma.point.aggregate({
         _sum: {
             amount: true

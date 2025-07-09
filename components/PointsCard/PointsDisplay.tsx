@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { getTeamPoints } from "@/app/actions";
-import PointsDisplayLoading from "@/components/PointsDisplayLoading";
+import { getTeamPoints } from "@/app/(default)/actions";
+import PointsDisplayLoading from "@/components/PointsCard/PointsDisplayLoading";
 
 interface Props {
-    teamId: number
+    teamId: string
 }
 
 export default function PointsDisplay({ teamId }: Props) {

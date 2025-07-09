@@ -1,11 +1,11 @@
 import { prisma } from "@/prisma";
-import PointsDisplay from "@/components/PointsDisplay";
-import "@/app/page.css";
+import PointsDisplay from "@/components/PointsCard/PointsDisplay";
+import "@/app/(default)/page.css";
 import React from "react";
 
 interface Props {
     teamName: string
-    teamId: number
+    teamId: string
     teamHexColor: string
 }
 
@@ -37,7 +37,7 @@ export default async function TeamPointsCard({ teamName, teamId, teamHexColor }:
     const darkRgba = `rgba(${rgb.r * 0.7}, ${rgb.g * 0.7}, ${rgb.b * 0.7}, 0.7)`;
 
     return (
-        <div className="flex flex-col shadow-xl rounded-xl text-black">
+        <div className="flex flex-col shadow-md rounded-xl text-black">
             <div className="w-full flex flex-col pt-3 pb-3 rounded-t-xl teamColorBg duration-200" style={{
                 "--dark-color": darkRgba,
                 "--light-color": rgba,
@@ -45,7 +45,7 @@ export default async function TeamPointsCard({ teamName, teamId, teamHexColor }:
                 <h1 className="w-full text-center text-6xl sm:text-7xl">{teamName.toUpperCase()}</h1>
                 <h2 className="w-full text-center text-xl sm:text-2xl">{groups.map(group => group.name).toString().replace(",", ", ")}</h2>
             </div>
-            <div className="w-full flex flex-col pt-5 pb-5 backdrop-blur-xl rounded-b-xl bg-[rgba(255,255,255,0.15)]">
+            <div className="w-full flex flex-col pt-5 pb-5 rounded-b-xl bg-[rgba(255,255,255,0.25)]">
                 <PointsDisplay teamId={teamId} />
             </div>
         </div>

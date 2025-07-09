@@ -1,6 +1,6 @@
 import { prisma } from "@/prisma";
-import TeamPointsCard from "@/components/TeamPointsCard";
-import "@/app/page.css";
+import TeamPointsCard from "@/components/PointsCard/TeamPointsCard";
+import "@/app/(default)/page.css";
 
 export default async function Page() {
     const teams = await prisma.team.findMany({

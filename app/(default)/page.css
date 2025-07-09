@@ -45,7 +45,7 @@
     background-size: 500%;
     animation: gradient 15s ease infinite;
     width: 100%;
-    min-height: calc(100dvh - 72px);
+    min-height: calc(100% - 72px);
 }
 
 .teamColorBg {
