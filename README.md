@@ -6,6 +6,20 @@ This site was created to streamline and modernize the week of *Color Wars* at a 
 
 Prior to this codebase, this site was written in PHP. Due to newer and faster technologies being available (and me wanting to learn React/Next.js) this site has been fully re-written in JavaScript while keeping the same format as the old version.
 
+## User Roles & Permissions
+
+- User:
+  - View points history
+- Specialist:
+  - *All the above*
+  - Add points to groups
+  - Verify accounts to *user* role
+- Administrator:
+  - *All the above*
+  - Add, edit, and remove groups
+  - Add, edit, and remove teams
+  - Modify user permissions
+
 ## Technologies Used
 
 - Next.js

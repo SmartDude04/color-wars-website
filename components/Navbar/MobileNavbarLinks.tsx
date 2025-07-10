@@ -49,9 +49,11 @@ export default function MobileNavbarLinks() {
                     <>
                         <Link href="/groups" className={linkStyles} onNavigate={() => setOpened(false)}>Groups</Link>
                         <Link href="/teams" className={linkStyles} onNavigate={() => setOpened(false)}>Teams</Link>
-                        <Link href="/users" className={linkStyles} onNavigate={() => setOpened(false)}>Users</Link>
                     </>
                 ) : <></>}
+                { role === "admin" || role === "specialist" ? (
+                    <Link href="/users" className={linkStyles} onNavigate={() => setOpened(false)}>Users</Link>
+                ) : <></> }
                 <div className="mt-5 w-full">
                     <MobileNavbarAuth />
                 </div>
