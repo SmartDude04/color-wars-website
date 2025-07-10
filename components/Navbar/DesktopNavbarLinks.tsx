@@ -10,15 +10,15 @@ export default async function DesktopNavbarLinks() {
     return (
         <div className="flex flex-row items-center ml-8">
             <Link href="/" className={linkStyles}>Home</Link>
+            <Link href="/about" className={linkStyles}>About</Link>
             { role === "admin" || role === "specialist" || role === "user" ? (
                 <Link href="/history" className={linkStyles}>History</Link>
             ) : <></> }
-            <Link href="/about" className={linkStyles}>About</Link>
             { role === "admin" ? (
                 <>
-                    <Link href="/users" className={linkStyles}>Users</Link>
-                    <Link href="/teams" className={linkStyles}>Teams</Link>
                     <Link href="/groups" className={linkStyles}>Groups</Link>
+                    <Link href="/teams" className={linkStyles}>Teams</Link>
+                    <Link href="/users" className={linkStyles}>Users</Link>
                 </>
             ) : <></> }
             { role === "admin" || role === "specialist" ? (

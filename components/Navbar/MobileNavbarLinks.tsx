@@ -41,15 +41,15 @@ export default function MobileNavbarLinks() {
                     </div>
                 ) }
                 <Link href="/" className={linkStyles} onNavigate={() => setOpened(false)}>Home</Link>
+                <Link href="/about" className={linkStyles} onNavigate={() => setOpened(false)}>About</Link>
                 { role === "admin" || role === "specialist" || role === "user" ? (
                     <Link href="/history" className={linkStyles} onNavigate={() => setOpened(false)}>History</Link>
                 ) : <></>}
-                <Link href="/about" className={linkStyles} onNavigate={() => setOpened(false)}>About</Link>
                 { role === "admin" ? (
                     <>
-                        <Link href="/users" className={linkStyles} onNavigate={() => setOpened(false)}>Users</Link>
-                        <Link href="/teams" className={linkStyles} onNavigate={() => setOpened(false)}>Teams</Link>
                         <Link href="/groups" className={linkStyles} onNavigate={() => setOpened(false)}>Groups</Link>
+                        <Link href="/teams" className={linkStyles} onNavigate={() => setOpened(false)}>Teams</Link>
+                        <Link href="/users" className={linkStyles} onNavigate={() => setOpened(false)}>Users</Link>
                     </>
                 ) : <></>}
                 <div className="mt-5 w-full">
