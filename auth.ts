@@ -6,6 +6,7 @@ import { signInSchema } from "@/zod";
 
 declare module "next-auth" {
     interface User {
+        id: string,
         username: string
         role: string
     }
@@ -71,6 +72,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     callbacks: {
         jwt: async ({ token, user }) => {
             if (user) {
+                token.id = user.id;
                 token.username = user.username;
                 token.role = user.role;
             }
@@ -78,6 +80,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         },
         session: async ({ session, token }) => {
             if (session.user) {
+                session.user.id = token.id as string;
                 session.user.username = token.username as string;
                 session.user.role = token.role as string;
             }
