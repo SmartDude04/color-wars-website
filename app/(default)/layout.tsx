@@ -20,12 +20,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
     return (
         <html lang="en" className={cachetStdBold.className} suppressHydrationWarning>
-            <body className="antialiased w-screen h-dvh">
-                <ThemeProvider
-                    attribute="class"
-                    defaultTheme="light"
-                    enableSystem={true}
-                >
+            <body className="antialiased w-screen h-dvh duration-200">
+                <ThemeProvider attribute="class" defaultTheme="light" enableSystem={true}>
                     <SessionProvider>
                         <Navbar />
                         {children}
