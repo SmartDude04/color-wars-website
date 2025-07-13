@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { getUsersData, verifyUserData, updateUserRole, deleteUserData } from "@/app/(default)/users/actions";
-import { useSession } from "next-auth/react";
 import VerifyUsersTable from "@/components/users/VerifyUsersTable";
 import UsersTable from "@/components/users/UsersTable";
 
@@ -23,24 +22,18 @@ interface UserDataType {
 
 interface Props {
     role: string
+    initialState: UserDataType
+    curUserId: string
 }
 
-export default function UsersMain({ role }: Props ) {
-    const [userData, setUserData] = useState<UserDataType>({ verifiedUsers: [], unverifiedUsers: [] });
-    const [loading, setLoading] = useState(true);
-    const curUserId = useSession().data?.user?.id;
+export default function UsersMain({ role, initialState, curUserId }: Props ) {
+    const [userData, setUserData] = useState<UserDataType>(initialState);
 
     const fetchUserData = async () => {
         // Fetch and set the data
         const fetchedUserData = await getUsersData();
         setUserData(fetchedUserData);
-
-        setLoading(false);
     }
-
-    useEffect(() => {
-        fetchUserData().then();
-    }, []);
 
     const verifyUser = async (userId: string) => {
         // Set the state optimistically
@@ -77,9 +70,9 @@ export default function UsersMain({ role }: Props ) {
 
     return (
         <div className="w-full flex flex-col items-center">
-            <VerifyUsersTable unverifiedUsers={userData.unverifiedUsers} verifyUser={verifyUser} deleteUser={deleteUser} loading={loading} />
+            <VerifyUsersTable unverifiedUsers={userData.unverifiedUsers} verifyUser={verifyUser} deleteUser={deleteUser} />
             { role === "admin" ? (
-                <UsersTable users={userData.verifiedUsers} changeUserRole={changeUserRole} deleteUser={deleteUser} curUserId={curUserId!} loading={loading} />
+                <UsersTable users={userData.verifiedUsers} changeUserRole={changeUserRole} deleteUser={deleteUser} curUserId={curUserId!} />
             ) : <></>}
         </div>
     );
