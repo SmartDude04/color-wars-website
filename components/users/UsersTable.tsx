@@ -1,7 +1,6 @@
 "use client";
 
 import UserRow from "@/components/users/UserRow";
-import LoadingRow from "@/components/users/LoadingRow";
 
 interface Props {
     users: {

@@ -1,7 +1,6 @@
 "use client";
 
 import VerifyUserRow from "./VerifyUserRow";
-import LoadingRow from "@/components/users/LoadingRow";
 
 interface Props {
     unverifiedUsers: {
