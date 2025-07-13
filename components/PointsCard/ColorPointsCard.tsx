@@ -4,30 +4,30 @@ import "@/app/(default)/page.css";
 import React from "react";
 
 interface Props {
-    teamName: string
-    teamId: string
-    teamHexColor: string
+    colorName: string
+    colorId: string
+    hexColor: string
 }
 
-export default async function TeamPointsCard({ teamName, teamId, teamHexColor }: Props) {
+export default async function ColorPointsCard({ colorName, colorId, hexColor }: Props) {
     const groups = await prisma.group.findMany({
         where: {
-            teamId: teamId
+            colorId: colorId
         },
         orderBy: {
             name: "asc"
         }
     });
 
-    // Verify hex color string is 6 chars long
+    // Verify hex color string
     const regex = /^#?([A-F0-9]{6}|[A-F0-9]{3})$/;
-    if (!regex.test(teamHexColor)) {
-        throw new Error(`Invalid team hex color "${teamHexColor}"passed to TeamPointsCard.`);
+    if (!regex.test(hexColor)) {
+        throw new Error(`Invalid hex color "${hexColor}"passed to TeamPointsCard.`);
     }
 
 
     // Convert hex to RGB to add an opacity and make the color less harsh
-    const rawRGB = /^#?([A-F\d]{2})([A-F\d]{2})([A-F\d]{2})$/i.exec(teamHexColor);
+    const rawRGB = /^#?([A-F\d]{2})([A-F\d]{2})([A-F\d]{2})$/i.exec(hexColor);
     const rgb = {
         r: parseInt(rawRGB![1], 16),
         g: parseInt(rawRGB![2], 16),
@@ -42,11 +42,11 @@ export default async function TeamPointsCard({ teamName, teamId, teamHexColor }:
                 "--dark-color": darkRgba,
                 "--light-color": rgba,
             } as React.CSSProperties}>
-                <h1 className="w-full text-center text-6xl sm:text-7xl">{teamName.toUpperCase()}</h1>
+                <h1 className="w-full text-center text-6xl sm:text-7xl">{colorName.toUpperCase()}</h1>
                 <h2 className="w-full text-center text-xl sm:text-2xl">{groups.map(group => group.name).toString().replace(",", ", ")}</h2>
             </div>
             <div className="w-full flex flex-col pt-5 pb-5 rounded-b-xl bg-[rgba(255,255,255,0.25)]">
-                <PointsDisplay teamId={teamId} />
+                <PointsDisplay teamId={colorId} />
             </div>
         </div>
     );

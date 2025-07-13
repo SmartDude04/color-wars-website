@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { getTeamPoints } from "@/app/(default)/actions";
+import { getColorPoints } from "@/app/(default)/actions";
 import PointsDisplayLoading from "@/components/PointsCard/PointsDisplayLoading";
 
 interface Props {
@@ -13,7 +13,7 @@ export default function PointsDisplay({ teamId }: Props) {
 
     useEffect(() => {
         const fetchPoints = async () => {
-            const points = await getTeamPoints(teamId);
+            const points = await getColorPoints(teamId);
             setPoints(points);
         }
 

@@ -1,9 +1,9 @@
 import { prisma } from "@/prisma";
-import TeamPointsCard from "@/components/PointsCard/TeamPointsCard";
+import ColorPointsCard from "@/components/PointsCard/ColorPointsCard";
 import "@/app/(default)/page.css";
 
 export default async function Page() {
-    const teams = await prisma.team.findMany({
+    const colors = await prisma.color.findMany({
         orderBy: {
             name: "asc"
         }
@@ -12,8 +12,8 @@ export default async function Page() {
     return (
         <div className="bg duration-200">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-6">
-                {teams.map(team => (
-                    <TeamPointsCard key={team.id} teamName={team.name} teamHexColor={team.hexColor} teamId={team.id} />
+                {colors.map(team => (
+                    <ColorPointsCard key={team.id} colorName={team.name} hexColor={team.hexColor} colorId={team.id} />
                 ))}
             </div>
         </div>

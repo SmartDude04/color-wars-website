@@ -2,14 +2,14 @@
 
 import { prisma } from "@/prisma";
 
-export async function getTeamPoints(teamId: string) {
+export async function getColorPoints(colorId: string) {
     const points = await prisma.point.aggregate({
         _sum: {
             amount: true
         },
         where: {
             group: {
-                teamId: teamId
+                colorId: colorId
             }
         }
     });
