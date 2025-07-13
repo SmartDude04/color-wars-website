@@ -22,7 +22,7 @@ export default function SignupForm() {
             <div className="w-full flex flex-row items-center justify-center">
                 <input type={passwordVisible ? "text" : "password"} name="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter A Password" className="w-[calc(90%-24px)] md:w-[calc(80%-24px)] text-xl border-b-2 pt-2 pb-2 mt-6 mb-6 focus:outline-none focus:placeholder:text-transparent placeholder:text-black dark:placeholder:text-white" required/>
                 <div className="flex items-center justify-center h-[46px] border-b-2 duration-200">
-                    <button type="button" onClick={() => setPasswordVisible(!passwordVisible)} className="dark:text-white text-black duration-200">
+                    <button type="button" onClick={() => setPasswordVisible(!passwordVisible)} className="dark:text-white text-black duration-200 cursor-pointer">
                         {passwordVisible ? (
                             <Eye width={24} height={24}/>
                         ) : (
