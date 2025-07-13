@@ -1,8 +1,14 @@
 "use server";
 
 import { prisma } from "@/prisma";
+import { auth } from "@/auth";
 
 export async function getUsersData() {
+    const session = await auth();
+    if (session?.user.role !== "admin" && session?.user.role !== "specialist") {
+        return { verifiedUsers: [], unverifiedUsers: [] };
+    }
+
     const users = await prisma.user.findMany({
         select: {
             id: true,
@@ -25,11 +31,20 @@ export async function getUsersData() {
             unverifiedUsers.push(user);
         }
     }
-    
-    return { verifiedUsers, unverifiedUsers };
+
+    if (session?.user.role === "admin") {
+        return { verifiedUsers, unverifiedUsers };
+    }
+
+    return { verifiedUsers: [], unverifiedUsers };
 }
 
 export async function verifyUserData(id: string) {
+    const session = await auth();
+    if (session?.user.role !== "admin" && session?.user.role !== "specialist") {
+        return;
+    }
+
     await prisma.user.update({
         where: {
             id: id
@@ -41,6 +56,16 @@ export async function verifyUserData(id: string) {
 }
 
 export async function updateUserRole(id: string, newRole: string) {
+    const session = await auth();
+    if (session?.user.role !== "admin") {
+        return;
+    }
+
+    // Make sure the user can't update their own role
+    if (session?.user.id === id) {
+        return;
+    }
+
     // Confirm role is within the valid roles
     if (newRole === "user" || newRole === "specialist" || newRole === "admin") {
         await prisma.user.update({
@@ -55,9 +80,37 @@ export async function updateUserRole(id: string, newRole: string) {
 }
 
 export async function deleteUserData(id: string) {
-    await prisma.user.delete({
-        where: {
-            id: id
-        }
-    });
+    const session = await auth();
+    if (session?.user.role !== "admin" && session?.user.role !== "specialist") {
+        return;
+    }
+
+    // Make sure user can't delete themselves
+    if (session?.user.id === id) {
+        return;
+    }
+
+    if (session.user.role === "admin") {
+        // If the user is an admin, they may be deleting a user with points. These need to be removed
+        await prisma.point.deleteMany({
+            where: {
+                userId: id
+            }
+        });
+
+        // Then delete the user themselves
+        await prisma.user.delete({
+            where: {
+                id: id
+            }
+        });
+    } else if (session.user.role === "specialist") {
+        // If the user is a specialist, make sure they can only delete unverified users
+        await prisma.user.delete({
+            where: {
+                id: id,
+                verified: false
+            }
+        });
+    }
 }
