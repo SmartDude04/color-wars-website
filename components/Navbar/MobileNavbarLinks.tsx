@@ -48,7 +48,7 @@ export default function MobileNavbarLinks() {
                 { role === "admin" ? (
                     <>
                         <Link href="/groups" className={linkStyles} onNavigate={() => setOpened(false)}>Groups</Link>
-                        <Link href="/teams" className={linkStyles} onNavigate={() => setOpened(false)}>Teams</Link>
+                        <Link href="/colors" className={linkStyles} onNavigate={() => setOpened(false)}>Colors</Link>
                     </>
                 ) : <></>}
                 { role === "admin" || role === "specialist" ? (
