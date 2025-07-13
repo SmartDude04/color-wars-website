@@ -21,7 +21,11 @@ interface UserDataType {
     }[]
 }
 
-export default function UsersMain() {
+interface Props {
+    role: string
+}
+
+export default function UsersMain({ role }: Props ) {
     const [userData, setUserData] = useState<UserDataType>({ verifiedUsers: [], unverifiedUsers: [] });
     const [loading, setLoading] = useState(true);
     const curUserId = useSession().data?.user?.id;
@@ -74,7 +78,9 @@ export default function UsersMain() {
     return (
         <div className="w-full flex flex-col items-center">
             <VerifyUsersTable unverifiedUsers={userData.unverifiedUsers} verifyUser={verifyUser} deleteUser={deleteUser} loading={loading} />
-            <UsersTable users={userData.verifiedUsers} changeUserRole={changeUserRole} deleteUser={deleteUser} curUserId={curUserId!} loading={loading} />
+            { role === "admin" ? (
+                <UsersTable users={userData.verifiedUsers} changeUserRole={changeUserRole} deleteUser={deleteUser} curUserId={curUserId!} loading={loading} />
+            ) : <></>}
         </div>
     );
 }
