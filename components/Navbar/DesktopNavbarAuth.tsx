@@ -19,7 +19,7 @@ export default async function DesktopNavbarAuth() {
     // If the user is logged in, show the sign-out and account buttons
     return (
         <div className="flex flex-row items-center justify-center">
-            <Link href="/account" className="text-2xl mr-4">{session.user.username}</Link>
+            <h1 className="text-2xl mr-4">{session.user.username}</h1>
             <form action={handleSignOut}>
                 <button className={`${styles} cursor-pointer`}>Sign Out</button>
             </form>
