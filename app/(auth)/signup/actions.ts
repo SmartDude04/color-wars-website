@@ -5,6 +5,7 @@ import { ZodError } from "zod/v4";
 import { prisma } from "@/prisma";
 import bcrypt from "bcryptjs";
 import { redirect } from "next/navigation";
+import { revalidateTag } from "next/cache";
 
 export async function handleSignup(previousState: string, formData: FormData) {
     try {
@@ -32,6 +33,9 @@ export async function handleSignup(previousState: string, formData: FormData) {
                 password: hashedPassword
             }
         });
+
+        // Revalidate the users tag
+        revalidateTag("users");
     } catch (error) {
         // If we encounter an error with the formatting, return that. Otherwise, throw the error and crash the client.
         if (error instanceof ZodError) {

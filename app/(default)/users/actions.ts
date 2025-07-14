@@ -2,6 +2,28 @@
 
 import { prisma } from "@/prisma";
 import { auth } from "@/auth";
+import { revalidateTag, unstable_cache } from "next/cache";
+
+const getUsersCached = unstable_cache(
+    async () => {
+        return prisma.user.findMany({
+            select: {
+                id: true,
+                username: true,
+                role: true,
+                verified: true
+            },
+            orderBy: {
+                username: "asc"
+            }
+        });
+    },
+    [],
+    {
+        tags: ["users"],
+        revalidate: false
+    }
+);
 
 export async function getUsersData() {
     const session = await auth();
@@ -9,17 +31,7 @@ export async function getUsersData() {
         return { verifiedUsers: [], unverifiedUsers: [] };
     }
 
-    const users = await prisma.user.findMany({
-        select: {
-            id: true,
-            username: true,
-            role: true,
-            verified: true
-        },
-        orderBy: {
-            username: "asc"
-        }
-    });
+    const users = await getUsersCached();
     
     const unverifiedUsers = [];
     const verifiedUsers = [];
@@ -53,6 +65,9 @@ export async function verifyUserData(id: string) {
             verified: true
         }
     });
+
+    // Revalidate user tag
+    revalidateTag("users");
 }
 
 export async function updateUserRole(id: string, newRole: string) {
@@ -77,6 +92,9 @@ export async function updateUserRole(id: string, newRole: string) {
             }
         });
     }
+
+    // Revalidate user tag
+    revalidateTag("users");
 }
 
 export async function deleteUserData(id: string) {
@@ -98,12 +116,16 @@ export async function deleteUserData(id: string) {
             }
         });
 
+        // Make sure to revalidate appropriate tags
+        revalidateTag("points");
+
         // Then delete the user themselves
         await prisma.user.delete({
             where: {
                 id: id
             }
         });
+
     } else if (session.user.role === "specialist") {
         // If the user is a specialist, make sure they can only delete unverified users
         await prisma.user.delete({
@@ -113,4 +135,7 @@ export async function deleteUserData(id: string) {
             }
         });
     }
+
+    // Revalidate user tag
+    revalidateTag("users");
 }

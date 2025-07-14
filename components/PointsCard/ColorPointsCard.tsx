@@ -2,6 +2,7 @@ import { prisma } from "@/prisma";
 import PointsDisplay from "@/components/PointsCard/PointsDisplay";
 import "@/app/(default)/page.css";
 import React from "react";
+import { unstable_cache } from "next/cache";
 
 interface Props {
     colorName: string
@@ -9,15 +10,26 @@ interface Props {
     hexColor: string
 }
 
+const getGroups = unstable_cache(
+    async (colorId: string) => {
+        return prisma.group.findMany({
+            where: {
+                colorId: colorId
+            },
+            orderBy: {
+                name: "asc"
+            }
+        });
+    },
+    [],
+    {
+        tags: ["groups"],
+        revalidate: false
+    }
+);
+
 export default async function ColorPointsCard({ colorName, colorId, hexColor }: Props) {
-    const groups = await prisma.group.findMany({
-        where: {
-            colorId: colorId
-        },
-        orderBy: {
-            name: "asc"
-        }
-    });
+    const groups = await getGroups(colorId);
 
     // Verify hex color string
     const regex = /^#?([A-F0-9]{6}|[A-F0-9]{3})$/;
@@ -42,7 +54,7 @@ export default async function ColorPointsCard({ colorName, colorId, hexColor }: 
                 "--dark-color": darkRgba,
                 "--light-color": rgba,
             } as React.CSSProperties}>
-                <h1 className="w-full text-center text-6xl sm:text-7xl">{colorName.toUpperCase()}</h1>
+                <h1 className="w-full text-center text-6xl sm:text-7xl pt-4 lg:pt-0">{colorName.toUpperCase()}</h1>
                 <h2 className="w-full text-center text-xl sm:text-2xl">{groups.map(group => group.name).toString().replace(",", ", ")}</h2>
             </div>
             <div className="w-full flex flex-col pt-5 pb-5 rounded-b-xl bg-[rgba(255,255,255,0.25)]">
