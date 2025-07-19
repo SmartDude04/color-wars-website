@@ -1,22 +1,6 @@
-import { prisma } from "@/prisma";
+import { getColorsCached } from "@/app/cached";
 import ColorPointsCard from "@/components/PointsCard/ColorPointsCard";
 import "@/app/page.css";
-import { unstable_cache } from "next/cache";
-
-const getColorsCached = unstable_cache(
-    async () => {
-        return prisma.color.findMany({
-            orderBy: {
-                name: "asc"
-            }
-        });
-    },
-    [],
-    {
-        tags: ["colors"],
-        revalidate: false
-    }
-);
 
 export default async function Page() {
     const colors = await getColorsCached();

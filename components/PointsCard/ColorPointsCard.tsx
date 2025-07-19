@@ -1,8 +1,7 @@
-import { prisma } from "@/prisma";
 import PointsDisplay from "@/components/PointsCard/PointsDisplay";
 import "@/app/page.css";
 import React from "react";
-import { unstable_cache } from "next/cache";
+import { getGroupsInColorCached } from "@/app/cached";
 
 interface Props {
     colorName: string
@@ -10,26 +9,8 @@ interface Props {
     hexColor: string
 }
 
-const getGroups = unstable_cache(
-    async (colorId: string) => {
-        return prisma.group.findMany({
-            where: {
-                colorId: colorId
-            },
-            orderBy: {
-                name: "asc"
-            }
-        });
-    },
-    [],
-    {
-        tags: ["groups"],
-        revalidate: false
-    }
-);
-
 export default async function ColorPointsCard({ colorName, colorId, hexColor }: Props) {
-    const groups = await getGroups(colorId);
+    const groups = await getGroupsInColorCached(colorId);
 
     // Verify hex color string
     const regex = /^#?([A-F0-9]{6}|[A-F0-9]{3})$/;

@@ -2,22 +2,8 @@
 
 import { auth } from "@/auth";
 import { prisma } from "@/prisma";
-import { revalidateTag, unstable_cache } from "next/cache";
-
-const getColorsCached = unstable_cache(
-    async () => {
-        return prisma.color.findMany({
-            orderBy: {
-                name: "asc"
-            }
-        });
-    },
-    [],
-    {
-        tags: ["colors"],
-        revalidate: false
-    }
-);
+import { revalidateTag } from "next/cache";
+import { getColorsCached } from "@/app/cached";
 
 export async function getColors() {
     const session = await auth();

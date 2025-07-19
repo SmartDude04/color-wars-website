@@ -2,28 +2,8 @@
 
 import { prisma } from "@/prisma";
 import { auth } from "@/auth";
-import { revalidateTag, unstable_cache } from "next/cache";
-
-const getUsersCached = unstable_cache(
-    async () => {
-        return prisma.user.findMany({
-            select: {
-                id: true,
-                username: true,
-                role: true,
-                verified: true
-            },
-            orderBy: {
-                username: "asc"
-            }
-        });
-    },
-    [],
-    {
-        tags: ["users"],
-        revalidate: false
-    }
-);
+import { revalidateTag } from "next/cache";
+import { getUsersCached } from "@/app/cached";
 
 export async function getUsersData() {
     const session = await auth();

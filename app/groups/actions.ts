@@ -1,23 +1,9 @@
 "use server";
 
-import { revalidateTag, unstable_cache } from "next/cache";
+import { revalidateTag } from "next/cache";
 import { prisma } from "@/prisma";
 import { auth } from "@/auth";
-
-const getGroupsAsync = unstable_cache(
-    async () => {
-        return prisma.group.findMany({
-            orderBy: {
-                name: "asc"
-            }
-        });
-    },
-    [],
-    {
-        tags: ["groups"],
-        revalidate: false
-    }
-);
+import { getGroupsCached } from "@/app/cached";
 
 export async function getGroups() {
     const session = await auth();
@@ -25,7 +11,7 @@ export async function getGroups() {
         return [];
     }
 
-    return getGroupsAsync();
+    return getGroupsCached();
 }
 
 export async function addGroup(name: string, colorId: string) {
