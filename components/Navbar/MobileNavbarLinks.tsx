@@ -55,7 +55,7 @@ export default function MobileNavbarLinks() {
                     <Link href="/users" className={linkStyles} onNavigate={() => setOpened(false)}>Users</Link>
                 ) : <></> }
                 <div className="mt-5 w-full">
-                    <MobileNavbarAuth />
+                    <MobileNavbarAuth closeLinks={() => setOpened(false)}/>
                 </div>
             </div>
         </>

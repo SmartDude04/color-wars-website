@@ -4,7 +4,11 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { handleSignOut } from "@/components/Navbar/actions";
 
-export default function MobileNavbarAuth() {
+interface Props {
+    closeLinks(): void
+}
+
+export default function MobileNavbarAuth({ closeLinks }: Props) {
     const { data: session } = useSession();
 
     // If the user is not logged in, show sign-in and sign up buttons
@@ -12,8 +16,8 @@ export default function MobileNavbarAuth() {
     if (!session?.user) {
         return (
             <div className="w-fit flex flex-col justify-start text-center">
-                <Link href="/login" className={`${styles} mr-1`}>Log In</Link>
-                <Link href="/signup" className={`${styles} ml-1`}>Sign Up</Link>
+                <Link href="/login" className={`${styles} mr-1`} onNavigate={closeLinks}>Log In</Link>
+                <Link href="/signup" className={`${styles} ml-1`} onNavigate={closeLinks}>Sign Up</Link>
             </div>
         );
     }
