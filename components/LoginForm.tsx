@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useState } from "react";
-import { handleLogin } from "@/app/(auth)/login/actions";
+import { handleLogin } from "@/app/login/actions";
 import Image from "next/image";
 import loadingSVG from "@/public/loading.svg";
 import loadingSVGDark from "@/public/loading-white.svg"

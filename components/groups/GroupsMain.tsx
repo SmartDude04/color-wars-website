@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { addGroup, deleteGroup, getGroups, updateGroup } from "@/app/(default)/groups/actions";
+import { addGroup, deleteGroup, getGroups, updateGroup } from "@/app/groups/actions";
 import { Plus } from "lucide-react";
 import NewGroupCard from "@/components/groups/NewGroupCard";
 import GroupCard from "@/components/groups/GroupCard";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { getColorPoints } from "@/app/(default)/actions";
+import { getColorPoints } from "@/app/actions";
 import PointsDisplayLoading from "@/components/PointsCard/PointsDisplayLoading";
 
 interface Props {

@@ -9,7 +9,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import { SessionProvider } from "next-auth/react";
 
 const cachetStdBold = localFont({
-    src: "../cachet-std-bold.otf"
+    src: "./cachet-std-bold.otf"
 });
 
 export const metadata: Metadata = {

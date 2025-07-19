@@ -1,6 +1,6 @@
 import { prisma } from "@/prisma";
 import ColorPointsCard from "@/components/PointsCard/ColorPointsCard";
-import "@/app/(default)/page.css";
+import "@/app/page.css";
 import { unstable_cache } from "next/cache";
 
 const getColorsCached = unstable_cache(

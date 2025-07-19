@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { getColors, addColor, updateColor, deleteColor } from "@/app/(default)/colors/actions";
+import { getColors, addColor, updateColor, deleteColor } from "@/app/colors/actions";
 import ColorCard from "@/components/colors/ColorCard";
 import { Plus } from "lucide-react";
 import NewColorCard from "@/components/colors/NewColorCard";

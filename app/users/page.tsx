@@ -1,7 +1,7 @@
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import UsersMain from "@/components/users/UsersMain";
-import { getUsersData } from "@/app/(default)/users/actions";
+import { getUsersData } from "@/app/users/actions";
 
 export default async function Page() {
     // Prevent unauthenticated access to this page

@@ -1,6 +1,6 @@
 import { prisma } from "@/prisma";
 import PointsDisplay from "@/components/PointsCard/PointsDisplay";
-import "@/app/(default)/page.css";
+import "@/app/page.css";
 import React from "react";
 import { unstable_cache } from "next/cache";
 
@@ -57,7 +57,7 @@ export default async function ColorPointsCard({ colorName, colorId, hexColor }: 
                 <h1 className="w-full text-center text-6xl sm:text-7xl pt-4 lg:pt-0">{colorName.toUpperCase()}</h1>
                 <h2 className="w-full text-center text-xl sm:text-2xl pl-4 pr-4">{groups.map(group => group.name).toString().replaceAll(",", ", ")}</h2>
             </div>
-            <div className="w-full flex flex-col pt-5 pb-5 rounded-b-xl bg-[rgba(255,255,255,0.25)]">
+            <div className="w-full flex flex-col pt-9 lg:pt-5 pb-5 rounded-b-xl backdrop-blur-xl z-0 bg-[rgba(255,255,255,0.25)]">
                 <PointsDisplay teamId={colorId} />
             </div>
         </div>

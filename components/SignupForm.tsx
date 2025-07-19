@@ -1,6 +1,6 @@
 "use client";
 
-import { handleSignup } from "@/app/(auth)/signup/actions";
+import { handleSignup } from "@/app/signup/actions";
 import { useActionState, useState } from "react";
 import Image from "next/image";
 import loadingSVG from "@/public/loading.svg";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { getUsersData, verifyUserData, updateUserRole, deleteUserData } from "@/app/(default)/users/actions";
+import { getUsersData, verifyUserData, updateUserRole, deleteUserData } from "@/app/users/actions";
 import VerifyUsersTable from "@/components/users/VerifyUsersTable";
 import UsersTable from "@/components/users/UsersTable";
 
