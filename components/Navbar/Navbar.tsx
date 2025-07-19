@@ -3,7 +3,6 @@ import ThemeSwitcher from "@/components/ThemeSwitcher";
 import NavbarLogo from "@/components/Navbar/NavbarLogo";
 import DesktopNavbarLinks from "@/components/Navbar/DesktopNavbarLinks";
 import MobileNavbarLinks from "@/components/Navbar/MobileNavbarLinks";
-import { Suspense } from "react";
 
 export default function Navbar() {
     return (
