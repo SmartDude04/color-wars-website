@@ -28,6 +28,7 @@ model Group {
 model Point {
   id String @id @default(cuid())
   timestamp DateTime @default(now())
+  activity String?
   amount Int
   description String?
 
