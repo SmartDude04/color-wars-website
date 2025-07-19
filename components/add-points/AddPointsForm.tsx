@@ -42,7 +42,7 @@ export default function AddPointsForm({ colors, groups, activities }: Props) {
     }
 
     const selectStyles = "mt-2 mb-2 disabled:text-gray-500 bg-gray-50 border border-gray-300 text-gray-900 text-lg text-center rounded-4xl focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-[#222222] dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-[90%]";
-    const inputStyles = "w-[90%] dark:border-gray-500 border-2 duration-200 pt-2 pb-2 mt-2 mb-2";
+    const inputStyles = "w-[90%] dark:border-gray-500 border-2 border-white dark:border-black duration-200 pt-2 pb-2 mt-2 mb-2";
     return (
         <>
             <input type="number" value={amount ? amount : ""} onChange={event => setAmount(event.target.valueAsNumber)} placeholder="Amount" className={`${inputStyles} rounded-4xl text-2xl text-center pl-4 pr-4`} />
