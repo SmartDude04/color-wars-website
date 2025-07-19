@@ -3,7 +3,7 @@
 import { prisma } from "@/prisma";
 import { auth } from "@/auth";
 import { revalidateTag } from "next/cache";
-import { getUsersCached } from "@/app/cached";
+import { getUsersCached } from "@/cached";
 
 export async function getUsersData() {
     const session = await auth();

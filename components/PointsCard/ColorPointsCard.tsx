@@ -1,7 +1,7 @@
 import PointsDisplay from "@/components/PointsCard/PointsDisplay";
 import "@/app/page.css";
 import React from "react";
-import { getGroupsInColorCached } from "@/app/cached";
+import { getGroupsInColorCached } from "@/cached";
 
 interface Props {
     colorName: string

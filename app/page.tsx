@@ -1,4 +1,4 @@
-import { getColorsCached } from "@/app/cached";
+import { getColorsCached } from "@/cached";
 import ColorPointsCard from "@/components/PointsCard/ColorPointsCard";
 import "@/app/page.css";
 

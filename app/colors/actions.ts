@@ -3,7 +3,7 @@
 import { auth } from "@/auth";
 import { prisma } from "@/prisma";
 import { revalidateTag } from "next/cache";
-import { getColorsCached } from "@/app/cached";
+import { getColorsCached } from "@/cached";
 
 export async function getColors() {
     const session = await auth();

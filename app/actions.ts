@@ -1,6 +1,6 @@
 "use server";
 
-import { getPointsForColorCached } from "@/app/cached";
+import { getPointsForColorCached } from "@/cached";
 
 export async function getColorPoints(colorId: string) {
     const points = await getPointsForColorCached(colorId);

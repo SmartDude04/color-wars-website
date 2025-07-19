@@ -17,6 +17,4 @@ export async function handleLogin(previousState: string, formData: FormData) {
         }
         throw e;
     }
-
-    return "success";
 }
