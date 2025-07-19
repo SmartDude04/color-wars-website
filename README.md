@@ -12,10 +12,10 @@ Prior to this codebase, this site was written in PHP. Due to newer and faster te
   - View points history
 - Specialist:
   - *All the above*
-  - Add points to groups
   - Verify accounts to *user* role
 - Administrator:
   - *All the above*
+  - Add points to groups
   - Add, edit, and remove groups
   - Add, edit, and remove teams
   - Modify user permissions
