@@ -50,7 +50,7 @@ export default async function ColorPointsCard({ colorName, colorId, hexColor }: 
 
     return (
         <div className="flex flex-col shadow-md rounded-xl text-black">
-            <div className="w-full flex flex-col pt-3 pb-3 rounded-t-xl teamColorBg duration-200" style={{
+            <div className="w-full flex flex-col pt-3 pb-3 rounded-t-xl teamColorBg duration-200 h-full" style={{
                 "--dark-color": darkRgba,
                 "--light-color": rgba,
             } as React.CSSProperties}>
