@@ -35,7 +35,7 @@ export default function ColorCard({ id, name, hexColor, updateColor, deleteColor
     const [nameInput, setNameInput] = useState(name);
     const [hexColorInput, setHexColorInput] = useState(hexColor);
     const [validHex, setValidHex] = useState<boolean>(confirmHexFormat(hexColor));
-    const [rgb, setRgb] = useState<{rgba: string, darkRgba: string}>(getRGB(hexColor));
+    const [rgb, setRgb] = useState<{ rgba: string, darkRgba: string }>(getRGB(hexColor));
 
     useEffect(() => {
         setIsMounted(true);
@@ -69,11 +69,11 @@ export default function ColorCard({ id, name, hexColor, updateColor, deleteColor
         <div className="h-[260px] rounded-xl flex flex-col items-center pt-6" style={{
             backgroundColor: isMounted ? (theme === "dark" ? rgb.darkRgba : rgb.rgba) : rgb.rgba
         }}>
-            <input type="text" onChange={(event) => setNameInput(event.target.value)} value={nameInput} className="w-[250px] outline-none border-b-2 text-center text-6xl duration-200" />
-            <input type="text" onChange={(event) => setHexColorInput(event.target.value.toUpperCase())} value={hexColorInput} className={`mt-4 w-[100px] outline-none border-b-2 text-center text-xl duration-200 ${!validHex ? "border-red-500" : "border-black dark:border-white"}`} />
+            <input type="text" onChange={(event) => setNameInput(event.target.value)} value={nameInput} className="w-[min(300px,95%)] outline-none border-b-2 text-center text-6xl duration-200" />
+            <input type="text" onChange={(event) => setHexColorInput(event.target.value.toUpperCase())} value={hexColorInput} className={`mt-4 w-[min(100px,95%)] outline-none border-b-2 text-center text-xl duration-200 ${!validHex ? "border-red-500" : "border-black dark:border-white"}`} />
             <div className="flex flex-row mt-6">
-                <button onClick={() => updateColor(id, nameInput, hexColorInput)} className="disabled:bg-gray-500 bg-green-600 dark:bg-green-800 text-white text-2xl pt-2 lg:pt-1 pb-1 pl-6 pr-6 rounded-4xl not-disabled:hover:bg-green-700 not-disabled:dark:hover:bg-green-900 duration-200 cursor-pointer disabled:cursor-not-allowed ml-1" disabled={!validHex || nameInput.length === 0}>Save</button>
-                <button onClick={() => setConfirmDelete(true)} className="bg-red-700 dark:bg-red-900 text-white text-2xl pt-2 lg:pt-1 pb-1 pl-6 pr-6 rounded-4xl hover:bg-red-800 dark:hover:bg-red-950 duration-200 cursor-pointer ml-1">Delete</button>
+                <button type="button" onClick={() => setConfirmDelete(true)} className="bg-red-700 dark:bg-red-900 text-white text-2xl pt-2 lg:pt-1 pb-1 pl-6 pr-6 rounded-4xl hover:bg-red-800 dark:hover:bg-red-950 duration-200 cursor-pointer ml-1">Delete</button>
+                <button type="submit" onClick={() => updateColor(id, nameInput, hexColorInput)} className="disabled:bg-gray-500 bg-green-600 dark:bg-green-800 text-white text-2xl pt-2 lg:pt-1 pb-1 pl-6 pr-6 rounded-4xl not-disabled:hover:bg-green-700 not-disabled:dark:hover:bg-green-900 duration-200 cursor-pointer disabled:cursor-not-allowed ml-1" disabled={!validHex || nameInput.length === 0}>Save</button>
             </div>
         </div>
     );
