@@ -104,3 +104,40 @@ export const getGroupsInColorCached = unstable_cache(
         revalidate: false
     }
 );
+
+export const getPointsCached = unstable_cache(
+    async () => {
+        return prisma.point.findMany({
+            select: {
+                id: true,
+                amount: true,
+                timestamp: true,
+                description: true,
+                group: {
+                    select: {
+                        name: true,
+                        color: {
+                            select: {
+                                name: true
+                            }
+                        }
+                    }
+                },
+                activity: {
+                    select: {
+                        name: true
+                    }
+                }
+            },
+            orderBy: {
+                timestamp: "desc"
+            },
+            take: 25
+        });
+    },
+    [],
+    {
+        tags: ["points"],
+        revalidate: false
+    }
+)
