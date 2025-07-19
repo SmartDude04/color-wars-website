@@ -25,10 +25,15 @@ model Group {
   points Point[]
 }
 
+model Activity {
+  name String @unique
+
+  points Point[]
+}
+
 model Point {
   id String @id @default(cuid())
   timestamp DateTime @default(now())
-  activity String?
   amount Int
   description String?
 
@@ -37,6 +42,9 @@ model Point {
 
   group Group @relation(fields: [groupId], references: [id])
   groupId String
+
+  activity Activity @relation(fields: [activityName], references: [name])
+  activityName String
 }
 
 model User {
