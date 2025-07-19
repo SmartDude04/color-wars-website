@@ -26,7 +26,7 @@ export default function MobileNavbarLinks() {
                 )}
             </button>
             <div className={`flex flex-col justify-start items-start fixed z-1 top-18 right-0 bottom-0 w-full p-6 bg-gray-100 dark:bg-gray-800 duration-200 ${opened ? "" : "translate-x-full opacity-0"}`}>
-                { role === "admin" || role === "specialist" ? (
+                { role === "admin" ? (
                     <div className="w-full flex justify-between items-center">
                         <Link href="/add-points" className="text-4xl mt-2 mb-2 pt-3 bg-yellow-400 dark:bg-yellow-800 rounded-4xl pl-5 pr-5 duration-200 flex items-center justify-center" onNavigate={() => setOpened(false)}>Add Points</Link>
                         <div className="flex items-center justify-center p-2 rounded-4xl bg-gray-300 dark:bg-gray-700">
