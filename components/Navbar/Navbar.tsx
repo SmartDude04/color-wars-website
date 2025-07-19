@@ -11,23 +11,17 @@ export default function Navbar() {
             <div className="flex flex-row items-center">
                 <NavbarLogo />
                 <div className="hidden lg:flex flex-row items-center">
-                    <Suspense fallback={null}>
-                        <DesktopNavbarLinks />
-                    </Suspense>
+                    <DesktopNavbarLinks />
                 </div>
             </div>
             <div className="hidden lg:flex flex-row items-center">
-                <Suspense fallback={null}>
-                    <DesktopNavbarAuth/>
-                </Suspense>
+                <DesktopNavbarAuth/>
                 <div className="ml-2">
                     <ThemeSwitcher />
                 </div>
             </div>
             <div className="flex lg:hidden flex-row items-center">
-                <Suspense fallback={null}>
-                    <MobileNavbarLinks />
-                </Suspense>
+                <MobileNavbarLinks />
             </div>
         </nav>
     );
