@@ -53,7 +53,7 @@ export default function ColorsMain({ initialState } : Props) {
             <div className="w-full pl-4 pt-6 sm:pl-6">
                 <button onClick={() => setAddColorModal(true)} className="flex flex-row items-center bg-gray-400 dark:bg-gray-700 hover:bg-gray-500 dark:hover:bg-gray-600 pt-1 pb-1 pl-4 pr-4 rounded-4xl duration-200 cursor-pointer">
                     <Plus width={48} height={48} strokeWidth={3}/>
-                    <h1 className="text-4xl pt-3 lg:pt-0">Add Color</h1>
+                    <h1 className="text-4xl">Add Color</h1>
                 </button>
             </div>
             <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pt-6 p-4 sm:p-6">

@@ -55,8 +55,8 @@ export default function NewGroupCard({ addGroup, cancelAddGroup, colors }: Props
                 ))}
             </select>
             <div className="flex flex-row mt-6">
-                <button onClick={cancelAddGroup} className="bg-gray-500 text-white text-2xl pt-2 lg:pt-2 pb-1 pl-6 pr-6 rounded-4xl hover:bg-gray-600 duration-200 cursor-pointer mr-1">Cancel</button>
-                <button onClick={() => addGroup(nameInput, colorIdInput)} className="disabled:bg-gray-500 bg-green-600 dark:bg-green-800 text-white text-2xl pt-2 lg:pt-2 pb-1 pl-6 pr-6 rounded-4xl not-disabled:hover:bg-green-700 not-disabled:dark:hover:bg-green-900 duration-200 cursor-pointer disabled:cursor-not-allowed ml-1" disabled={colorIdInput === "" || nameInput.length === 0}>Add</button>
+                <button onClick={cancelAddGroup} className="bg-gray-500 text-white text-2xl pt-1 pb-1 pl-6 pr-6 rounded-4xl hover:bg-gray-600 duration-200 cursor-pointer mr-1">Cancel</button>
+                <button onClick={() => addGroup(nameInput, colorIdInput)} className="disabled:bg-gray-500 bg-green-600 dark:bg-green-800 text-white text-2xl pt-1 pb-1 pl-6 pr-6 rounded-4xl not-disabled:hover:bg-green-700 not-disabled:dark:hover:bg-green-900 duration-200 cursor-pointer disabled:cursor-not-allowed ml-1" disabled={colorIdInput === "" || nameInput.length === 0}>Add</button>
             </div>
         </div>
     );

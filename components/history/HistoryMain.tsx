@@ -44,7 +44,7 @@ export default function HistoryMain({ initialPoints, canDelete }: Props) {
     return (
         <div className="w-full flex flex-col items-center">
             <div className="w-[95%] lg:w-[80%] mt-6 border-1 border-gray-300 dark:border-[#333333] bg-white dark:bg-[#151515] rounded-xl duration-200 text-lg flex flex-col">
-                <div className="rounded-t-xl bg-blue-100 dark:bg-[#131522] w-full flex flex-row items-center p-2 pt-4 lg:pt-2">
+                <div className="rounded-t-xl bg-blue-100 dark:bg-[#131522] w-full flex flex-row items-center p-2 pt-2">
                     <h1 className={`${headerStyles} hidden md:block w-[17%]`}>Date/Time</h1>
                     <h1 className={`${headerStyles} w-[30%] md:w-[13%]`}>Amount</h1>
                     <h1 className={`${headerStyles} w-[30%] md:w-[10%]`}>Color</h1>

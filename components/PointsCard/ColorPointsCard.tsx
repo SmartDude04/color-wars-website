@@ -34,10 +34,10 @@ export default async function ColorPointsCard({ name, hexColor, amount, groups }
                 "--dark-color": darkRgba,
                 "--light-color": rgba,
             } as React.CSSProperties}>
-                <h1 className="w-full text-center text-6xl sm:text-7xl pt-4 lg:pt-0">{name.toUpperCase()}</h1>
+                <h1 className="w-full text-center text-6xl sm:text-7xl">{name.toUpperCase()}</h1>
                 <h2 className="w-full text-center text-xl sm:text-2xl pl-4 pr-4">{groups.map(group => group.name).toString().replaceAll(",", ", ")}</h2>
             </div>
-            <div className="w-full flex flex-col pt-9 lg:pt-5 pb-5 rounded-b-xl backdrop-blur-xl z-0 bg-[rgba(255,255,255,0.25)]">
+            <div className="w-full flex flex-col pt-5 pb-5 rounded-b-xl backdrop-blur-xl z-0 bg-[rgba(255,255,255,0.25)]">
                 <h1 className="w-full text-center sm:text-8xl text-7xl">{amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h1>
             </div>
         </div>

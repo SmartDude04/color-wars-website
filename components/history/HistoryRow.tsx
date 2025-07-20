@@ -46,15 +46,15 @@ export default function HistoryRow({ point, canDelete, onDelete, oddRow, lastRow
 
     if (confirmDelete) {
         return (
-            <div className={`${oddRow ? "bg-gray-200 dark:bg-[#202020]" : ""} w-full flex flex-row items-center justify-center p-2 pt-4 pb-2 lg:pt-2 ${lastRow ? "rounded-bl-xl" : ""} ${lastRow ? "rounded-br-xl" : ""}`}>
-                <button onClick={() => setConfirmDelete(false)} className="bg-gray-500 text-white text-xl pt-2 lg:pt-1 pb-1 pl-6 pr-6 rounded-4xl hover:bg-gray-600 duration-200 cursor-pointer m-1">Cancel</button>
-                <button onClick={() => onDelete(point.id)} className="bg-red-700 text-white text-xl pt-2 lg:pt-1 pb-1 pl-6 pr-6 rounded-4xl hover:bg-red-800 duration-200 cursor-pointer m-1">Confirm Delete</button>
+            <div className={`${oddRow ? "bg-gray-200 dark:bg-[#202020]" : ""} w-full flex flex-row items-center justify-center p-2 pt-2 pb-2 ${lastRow ? "rounded-bl-xl" : ""} ${lastRow ? "rounded-br-xl" : ""}`}>
+                <button onClick={() => setConfirmDelete(false)} className="bg-gray-500 text-white text-xl pt-1 pb-1 pl-6 pr-6 rounded-4xl hover:bg-gray-600 duration-200 cursor-pointer m-1">Cancel</button>
+                <button onClick={() => onDelete(point.id)} className="bg-red-700 text-white text-xl pt-1 pb-1 pl-6 pr-6 rounded-4xl hover:bg-red-800 duration-200 cursor-pointer m-1">Confirm Delete</button>
             </div>
         );
     }
 
     return (
-        <div className={`${oddRow ? "bg-gray-200 dark:bg-[#202020]" : ""} w-full flex flex-row items-center p-2 pt-6 pb-4 lg:pt-4 ${lastRow ? "rounded-bl-xl" : ""} ${lastRow ? "rounded-br-xl" : ""}`}>
+        <div className={`${oddRow ? "bg-gray-200 dark:bg-[#202020]" : ""} w-full flex flex-row items-center p-2 pt-4 pb-4 ${lastRow ? "rounded-bl-xl" : ""} ${lastRow ? "rounded-br-xl" : ""}`}>
             <h1 className="hidden md:block w-[17%]">{dateTime}</h1>
             <h1 className="w-[30%] md:w-[13%]">{point.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h1>
             <h1 className="w-[30%] md:w-[10%]">{point.group.color.name}</h1>
@@ -62,7 +62,7 @@ export default function HistoryRow({ point, canDelete, onDelete, oddRow, lastRow
             <h1 className="w-[35%] md:w-[15%]">{point.activity.name}</h1>
             <p className={`hidden md:block ${canDelete ? "w-[30%]" : "w-[35%]"}`}>{point.description}</p>
             { canDelete && (
-                <button onClick={() => setConfirmDelete(true)} className="w-[5%] flex justify-center pb-2 lg:pb-0 cursor-pointer"><Trash2 width={24} height={24}/></button>
+                <button onClick={() => setConfirmDelete(true)} className="w-[5%] flex justify-center cursor-pointer"><Trash2 width={24} height={24}/></button>
             ) }
         </div>
     );

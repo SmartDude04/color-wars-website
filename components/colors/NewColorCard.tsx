@@ -49,8 +49,8 @@ export default function NewColorCard({ addColor, cancelAddColor }: Props) {
             <input type="text" onChange={(event) => setNameInput(event.target.value)} value={nameInput} className="w-[min(300px,95%)] outline-none border-b-2 text-center text-6xl duration-200" />
             <input type="text" onChange={(event) => setHexColorInput(event.target.value.toUpperCase())} value={hexColorInput} className={`mt-4 w-[100px] outline-none border-b-2 text-center text-xl duration-200 ${!validHex ? "border-red-500" : "border-black dark:border-white"}`} />
             <div className="flex flex-row mt-6">
-                <button onClick={cancelAddColor} className="bg-gray-500 text-white text-2xl pt-2 lg:pt-2 pb-1 pl-6 pr-6 rounded-4xl hover:bg-gray-600 duration-200 cursor-pointer mr-1">Cancel</button>
-                <button onClick={() => addColor(nameInput, hexColorInput)} className="disabled:bg-gray-500 bg-green-600 dark:bg-green-800 text-white text-2xl pt-2 lg:pt-2 pb-1 pl-6 pr-6 rounded-4xl not-disabled:hover:bg-green-700 not-disabled:dark:hover:bg-green-900 duration-200 cursor-pointer disabled:cursor-not-allowed ml-1" disabled={!validHex || nameInput.length === 0}>Add</button>
+                <button onClick={cancelAddColor} className="bg-gray-500 text-white text-2xl pt-1 pb-1 pl-6 pr-6 rounded-4xl hover:bg-gray-600 duration-200 cursor-pointer mr-1">Cancel</button>
+                <button onClick={() => addColor(nameInput, hexColorInput)} className="disabled:bg-gray-500 bg-green-600 dark:bg-green-800 text-white text-2xl pt-1 pb-1 pl-6 pr-6 rounded-4xl not-disabled:hover:bg-green-700 not-disabled:dark:hover:bg-green-900 duration-200 cursor-pointer disabled:cursor-not-allowed ml-1" disabled={!validHex || nameInput.length === 0}>Add</button>
             </div>
         </div>
     );

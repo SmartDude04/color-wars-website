@@ -32,7 +32,7 @@ export default function UserRow({ user, changeUserRole, deleteUser, isLastRow, i
                 </select>
             </div>
             <h1 className="p-1 pl-0! md:p-4 w-[30%]">
-                <button onClick={() => deleteUser(user.id)} disabled={isCurrentUser} className="bg-red-200 dark:bg-red-900 pt-2 lg:pt-1 pb-1 pl-2 pr-2 md:pl-6 md:pr-6 rounded-md md:rounded-3xl hover:bg-red-300 dark:hover:bg-red-800 cursor-pointer duration-150 disabled:bg-gray-300 disabled:cursor-not-allowed dark:disabled:bg-gray-800">Delete</button>
+                <button onClick={() => deleteUser(user.id)} disabled={isCurrentUser} className="bg-red-200 dark:bg-red-900 pt-1 pb-1 pl-2 pr-2 md:pl-6 md:pr-6 rounded-md md:rounded-3xl hover:bg-red-300 dark:hover:bg-red-800 cursor-pointer duration-150 disabled:bg-gray-300 disabled:cursor-not-allowed dark:disabled:bg-gray-800">Delete</button>
             </h1>
         </div>
     );

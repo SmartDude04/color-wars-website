@@ -60,8 +60,8 @@ export default function GroupCard({ id, name, colorId, colors, updateGroup, dele
                 <h1 className="text-5xl text-center">Are you sure?</h1>
                 <h2 className="text-center m-4 mt-2">This will also delete any points associated with this group</h2>
                 <div className="flex flex-row">
-                    <button onClick={() => setConfirmDelete(false)} className="bg-gray-500 text-white text-2xl pt-2 lg:pt-1 pb-1 pl-6 pr-6 rounded-4xl hover:bg-gray-600 duration-200 cursor-pointer mr-1">Cancel</button>
-                    <button onClick={() => deleteGroup(id)} className="bg-red-700 text-white text-2xl pt-2 lg:pt-1 pb-1 pl-6 pr-6 rounded-4xl hover:bg-red-800 duration-200 cursor-pointer ml-1">Confirm</button>
+                    <button onClick={() => setConfirmDelete(false)} className="bg-gray-500 text-white text-2xl pt-1 pb-1 pl-6 pr-6 rounded-4xl hover:bg-gray-600 duration-200 cursor-pointer mr-1">Cancel</button>
+                    <button onClick={() => deleteGroup(id)} className="bg-red-700 text-white text-2xl pt-1 pb-1 pl-6 pr-6 rounded-4xl hover:bg-red-800 duration-200 cursor-pointer ml-1">Confirm</button>
                 </div>
             </div>
         );
@@ -78,8 +78,8 @@ export default function GroupCard({ id, name, colorId, colors, updateGroup, dele
                 ))}
             </select>
             <div className="flex flex-row mt-6">
-                <button type="button" onClick={() => setConfirmDelete(true)} className="bg-red-700 dark:bg-red-900 text-white text-2xl pt-2 lg:pt-1 pb-1 pl-6 pr-6 rounded-4xl hover:bg-red-800 dark:hover:bg-red-950 duration-200 cursor-pointer ml-1">Delete</button>
-                <button type="submit" onClick={() => updateGroup(id, nameInput, colorIdInput)} className="disabled:bg-gray-500 bg-green-600 dark:bg-green-800 text-white text-2xl pt-2 lg:pt-1 pb-1 pl-6 pr-6 rounded-4xl not-disabled:hover:bg-green-700 not-disabled:dark:hover:bg-green-900 duration-200 cursor-pointer disabled:cursor-not-allowed ml-1" disabled={nameInput.length === 0}>Save</button>
+                <button type="button" onClick={() => setConfirmDelete(true)} className="bg-red-700 dark:bg-red-900 text-white text-2xl pt-1 pb-1 pl-6 pr-6 rounded-4xl hover:bg-red-800 dark:hover:bg-red-950 duration-200 cursor-pointer ml-1">Delete</button>
+                <button type="submit" onClick={() => updateGroup(id, nameInput, colorIdInput)} className="disabled:bg-gray-500 bg-green-600 dark:bg-green-800 text-white text-2xl pt-1 pb-1 pl-6 pr-6 rounded-4xl not-disabled:hover:bg-green-700 not-disabled:dark:hover:bg-green-900 duration-200 cursor-pointer disabled:cursor-not-allowed ml-1" disabled={nameInput.length === 0}>Save</button>
             </div>
         </div>
     );

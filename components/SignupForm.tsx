@@ -32,7 +32,7 @@ export default function SignupForm() {
                 </div>
             </div>
             <p className="text-red-500 dark:text-red-700 text-center duration-200">{state}</p>
-            <button type="submit" disabled={isPending || !username || !password} className="mt-12 w-[90%] md:w-[80%] bg-white dark:bg-[#2e2e2e] text-3xl pt-4 pb-2 md:pt-4 md:pb-4 rounded-4xl disabled:cursor-not-allowed cursor-pointer not-disabled:hover:bg-gray-200 dark:not-disabled:hover:bg-[#404040] duration-200 flex items-center justify-center">
+            <button type="submit" disabled={isPending || !username || !password} className="mt-12 w-[90%] md:w-[80%] bg-white dark:bg-[#2e2e2e] text-3xl pt-3 pb-3 rounded-4xl disabled:cursor-not-allowed cursor-pointer not-disabled:hover:bg-gray-200 dark:not-disabled:hover:bg-[#404040] duration-200 flex items-center justify-center">
                 {isPending ? (
                     <Image alt="Loading..." src={theme === "dark" ? loadingSVGDark : loadingSVG} width={36} height={36} />
                 ) : (

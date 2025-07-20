@@ -69,7 +69,7 @@ export default function AddPointsForm({ colors, groups, activities }: Props) {
                 ))}
             </select>
             <textarea rows={2} value={description} onChange={event => setDescription(event.target.value)} placeholder="Description (optional)" className={`${inputStyles} resize-none rounded-lg placeholder:text-center pl-2 pr-2`} />
-            <button onClick={handleAddPoints} disabled={amount === 0 || group.id === "" || group.colorId !== color.id || activity.name === ""} className="disabled:text-gray-500 mt-12 w-[90%] md:w-[80%] bg-white dark:bg-[#2e2e2e] text-3xl pt-4 pb-2 md:pt-4 md:pb-4 rounded-4xl disabled:cursor-not-allowed cursor-pointer not-disabled:hover:bg-gray-200 dark:not-disabled:hover:bg-[#404040] duration-200 flex items-center justify-center">
+            <button onClick={handleAddPoints} disabled={amount === 0 || group.id === "" || group.colorId !== color.id || activity.name === ""} className="disabled:text-gray-500 mt-12 w-[90%] md:w-[80%] bg-white dark:bg-[#2e2e2e] text-3xl pt-3 pb-3 rounded-4xl disabled:cursor-not-allowed cursor-pointer not-disabled:hover:bg-gray-200 dark:not-disabled:hover:bg-[#404040] duration-200 flex items-center justify-center">
                 { isPending ? (
                     <Image alt="Loading..." src={theme === "dark" ? loadingSVGDark : loadingSVG} width={36} height={36} />
                 ) : "Add Points"}
