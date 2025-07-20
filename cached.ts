@@ -191,3 +191,25 @@ export const getColorsWithGroupsAndPointsCached = unstable_cache(
         revalidate: false
     }
 );
+
+export const getIsBlurredCached = unstable_cache(
+    async () => {
+        const numEntries = await prisma.blur.count({
+            where: {
+                blurred: true
+            }
+        });
+
+        if (numEntries !== 0 && numEntries !== 1) {
+            await prisma.blur.deleteMany();
+            throw new Error("A database error occurred checking if points should be blurred. Try again.");
+        }
+
+        return numEntries === 1;
+    },
+    [],
+    {
+        tags: ["blur"],
+        revalidate: false
+    }
+)

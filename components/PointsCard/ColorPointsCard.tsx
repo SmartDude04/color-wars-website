@@ -7,10 +7,11 @@ interface Props {
     amount: number
     groups: {
         name: string
-    }[]
+    }[],
+    blurred: boolean
 }
 
-export default async function ColorPointsCard({ name, hexColor, amount, groups }: Props) {
+export default async function ColorPointsCard({ name, hexColor, amount, groups, blurred }: Props) {
 
     // Verify hex color string
     const regex = /^#?([A-F0-9]{6}|[A-F0-9]{3})$/;
@@ -38,7 +39,9 @@ export default async function ColorPointsCard({ name, hexColor, amount, groups }
                 <h2 className="w-full text-center text-xl sm:text-2xl pl-4 pr-4">{groups.map(group => group.name).toString().replaceAll(",", ", ")}</h2>
             </div>
             <div className="w-full flex flex-col pt-5 pb-5 rounded-b-xl backdrop-blur-xl z-0 bg-[rgba(255,255,255,0.25)]">
-                <h1 className="w-full text-center sm:text-8xl text-7xl">{amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h1>
+                <h1 className={`w-full text-center sm:text-8xl text-7xl z-0 ${blurred && "blur-[20px] cursor-default"}`}>{
+                    blurred ? Math.floor(Math.random() * 90000) + 10000 : amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                }</h1>
             </div>
         </div>
     );

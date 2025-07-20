@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { getColors, addColor, updateColor, deleteColor } from "@/app/colors/actions";
+import { getColors, addColor, updateColor, deleteColor, setBlur } from "@/app/colors/actions";
 import ColorCard from "@/components/colors/ColorCard";
-import { Plus } from "lucide-react";
+import { Eye, EyeClosed, Plus } from "lucide-react";
 import NewColorCard from "@/components/colors/NewColorCard";
 
 type ColorDataType = {
@@ -13,12 +13,14 @@ type ColorDataType = {
 }[];
 
 interface Props {
-    initialState: ColorDataType
+    initialState: ColorDataType,
+    isBlurred: boolean
 }
 
-export default function ColorsMain({ initialState } : Props) {
+export default function ColorsMain({ initialState, isBlurred } : Props) {
     const [colors, setColors] = useState<ColorDataType>(initialState);
     const [addColorModal, setAddColorModal] = useState(false);
+    const [blurred, setBlurred] = useState(isBlurred);
 
     const fetchColors = async () => {
         const fetchedColors = await getColors();
@@ -48,12 +50,35 @@ export default function ColorsMain({ initialState } : Props) {
         await fetchColors();
     }
 
+    const blurPointsHandler = async () => {
+        if (blurred) {
+            setBlurred(false);
+            await setBlur(false);
+        } else {
+            setBlurred(true);
+            await setBlur(true);
+        }
+    }
+
     return (
         <>
-            <div className="w-full pl-4 pt-6 sm:pl-6">
-                <button onClick={() => setAddColorModal(true)} className="flex flex-row items-center bg-gray-400 dark:bg-gray-700 hover:bg-gray-500 dark:hover:bg-gray-600 pt-1 pb-1 pl-4 pr-4 rounded-4xl duration-200 cursor-pointer">
-                    <Plus width={48} height={48} strokeWidth={3}/>
+            <div className="w-full pl-4 pt-6 sm:pl-6 sm:pr-6 flex flex-col lg:flex-row justify-between">
+                <button onClick={() => setAddColorModal(true)} className="w-fit flex flex-row items-center bg-gray-400 dark:bg-gray-700 hover:bg-gray-500 dark:hover:bg-gray-600 pt-1 pb-1 pl-4 pr-4 rounded-4xl duration-200 cursor-pointer mb-4 md:mb-0">
+                    <Plus width={48} height={48} strokeWidth={3} />
                     <h1 className="text-4xl">Add Color</h1>
+                </button>
+                <button onClick={blurPointsHandler} className="w-fit flex flex-row items-center bg-gray-400 dark:bg-gray-700 hover:bg-gray-500 dark:hover:bg-gray-600 pt-1 pb-1 pl-4 pr-4 rounded-4xl duration-200 cursor-pointer">
+                    { blurred ? (
+                        <>
+                            <EyeClosed width={48} height={48} strokeWidth={3} />
+                            <h1 className="text-4xl ml-1">Unblur points</h1>
+                        </>
+                    ) : (
+                        <>
+                            <Eye width={48} height={48} strokeWidth={3} />
+                            <h1 className="text-4xl ml-1">Blur points</h1>
+                        </>
+                    )}
                 </button>
             </div>
             <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pt-6 p-4 sm:p-6">

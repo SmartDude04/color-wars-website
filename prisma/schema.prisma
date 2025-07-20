@@ -9,17 +9,17 @@ datasource db {
 }
 
 model Color {
-  id String @id @default(cuid())
-  name String @unique
+  id       String  @id @default(cuid())
+  name     String  @unique
   hexColor String
-  groups Group[]
+  groups   Group[]
 }
 
 model Group {
-  id String @id @default(cuid())
+  id   String @id @default(cuid())
   name String @unique
 
-  color Color @relation(fields: [colorId], references: [id])
+  color   Color  @relation(fields: [colorId], references: [id])
   colorId String
 
   points Point[]
@@ -32,27 +32,31 @@ model Activity {
 }
 
 model Point {
-  id String @id @default(cuid())
-  timestamp DateTime @default(now())
-  amount Int
+  id          String   @id @default(cuid())
+  timestamp   DateTime @default(now())
+  amount      Int
   description String?
 
-  user User @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
   userId String
 
-  group Group @relation(fields: [groupId], references: [id])
+  group   Group  @relation(fields: [groupId], references: [id])
   groupId String
 
-  activity Activity @relation(fields: [activityName], references: [name])
+  activity     Activity @relation(fields: [activityName], references: [name])
   activityName String
 }
 
+model Blur {
+  blurred Boolean @id
+}
+
 model User {
-  id String @id @default(cuid())
-  username String @unique
+  id       String  @id @default(cuid())
+  username String  @unique
   password String
   verified Boolean @default(false)
-  role String @default("user")
+  role     String  @default("user")
 
   points Point[]
 

@@ -125,3 +125,16 @@ export async function deleteColor(id: string) {
     // Revalidate the colors tag
     revalidateTag("colors");
 }
+
+export async function setBlur(isBlurred: boolean) {
+    if (isBlurred) {
+        await prisma.blur.create({
+            data: {
+                blurred: true
+            }
+        });
+    } else {
+        await prisma.blur.deleteMany();
+    }
+    revalidateTag("blur");
+}
