@@ -52,25 +52,6 @@ export const getUsersCached = unstable_cache(
     }
 );
 
-export const getPointsForColorCached = unstable_cache(
-    async (colorId: string) => {
-        return prisma.point.aggregate({
-            _sum: {
-                amount: true
-            },
-            where: {
-                group: {
-                    colorId: colorId
-                }
-            }
-        });
-    },
-    [],
-    {
-        tags: ["points"],
-        revalidate: false
-    }
-);
 
 export const getGroupsCached = unstable_cache(
     async () => {
@@ -140,4 +121,73 @@ export const getPointsCached = unstable_cache(
         tags: ["points"],
         revalidate: false
     }
-)
+);
+
+const getColorsWithGroupsCached = unstable_cache(
+    async () => {
+        return prisma.color.findMany({
+            select: {
+                id: true,
+                name: true,
+                hexColor: true,
+                groups: {
+                    select: {
+                        name: true
+                    },
+                    orderBy: {
+                        name: "asc"
+                    }
+                }
+            }
+        });
+    },
+    [],
+    {
+        tags: ["colors", "groups"],
+        revalidate: false
+    }
+);
+
+export const getColorsWithGroupsAndPointsCached = unstable_cache(
+    async () => {
+        const colorsWithGroups = await getColorsWithGroupsCached();
+
+        // Combine the colors and groups with their respective points
+        // Promise.all is used to concurrently map all colors and return data instead of a promise
+        const colorsWithGroupsAndPoints = await Promise.all(
+            colorsWithGroups.map(async (color) => {
+                const pointsData = await prisma.point.aggregate({
+                    _sum: {
+                        amount: true
+                    },
+                    where: {
+                        group: {
+                            colorId: color.id
+                        }
+                    }
+                });
+
+                return {
+                    id: color.id,
+                    name: color.name,
+                    hexColor: color.hexColor,
+                    amount: pointsData._sum.amount || 0,
+                    groups: color.groups
+                };
+            })
+        );
+
+        // Data is sorted by points then by name
+        return colorsWithGroupsAndPoints.sort((a, b) => {
+            if (a.amount === b.amount) {
+                return a.name.localeCompare(b.name);
+            }
+            return b.amount - a.amount;
+        });
+    },
+    [],
+    {
+        tags: ["colors", "groups", "points"],
+        revalidate: false
+    }
+);
