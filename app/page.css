@@ -40,12 +40,7 @@
             radial-gradient(at 34% 23%, hsla(90,67%,68%,1) 0px, transparent 50%),
             radial-gradient(at 61% 26%, hsla(335,89%,76%,1) 0px, transparent 50%);
 
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 500%;
     animation: gradient 15s ease infinite;
-    width: 100%;
-    min-height: calc(100% - 72px);
 }
 
 .teamColorBg {
@@ -72,10 +67,5 @@
             radial-gradient(at 34% 23%, hsl(90, 67%, 27%) 0px, transparent 50%),
             radial-gradient(at 61% 26%, hsl(335, 88%, 30%) 0px, transparent 50%);
 
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 500%;
     animation: gradient 15s ease infinite;
-    width: 100%;
-    min-height: calc(100dvh - 72px);
 }
