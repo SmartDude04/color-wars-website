@@ -1,7 +1,6 @@
 "use server";
 
 import { InvalidCredentials, NotVerified, signIn } from "@/auth";
-import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 
 export async function handleLogin(previousState: string, formData: FormData) {
@@ -15,7 +14,7 @@ export async function handleLogin(previousState: string, formData: FormData) {
         // Refresh the navbar to show the user as logged in
         revalidatePath("/", "layout");
 
-        redirect("/");
+        return "success";
     } catch (e) {
         if (e instanceof InvalidCredentials || e instanceof NotVerified) {
             return e.code;

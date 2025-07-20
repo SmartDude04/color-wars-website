@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState, useState, useEffect } from "react";
 import { handleLogin } from "@/app/login/actions";
 import Image from "next/image";
 import loadingSVG from "@/public/loading.svg";
@@ -14,6 +14,13 @@ export default function LoginForm() {
     const [password, setPassword] = useState("");
     const [passwordVisible, setPasswordVisible] = useState(false);
     const { theme } = useTheme();
+
+    useEffect(() => {
+        // Redirect to homepage if login was a success
+        if (state === "success") {
+            window.location.replace("/");
+        }
+    }, [state]);
 
     const inputClass = "w-[90%] md:w-[80%] text-xl border-b-2 pt-2 pb-2 mt-6 mb-6 focus:outline-none focus:placeholder:text-transparent placeholder:text-black dark:placeholder:text-white";
     return (
@@ -31,7 +38,7 @@ export default function LoginForm() {
                     </button>
                 </div>
             </div>
-            <p className="text-red-500 dark:text-red-700 text-center duration-200">{state}</p>
+            <p className="text-red-500 dark:text-red-700 text-center duration-200">{state !== "success" && state}</p>
             <button type="submit" disabled={isPending || !username || !password} className="mt-12 w-[90%] md:w-[80%] bg-white dark:bg-[#2e2e2e] text-3xl pt-3 pb-3 rounded-4xl disabled:cursor-not-allowed cursor-pointer not-disabled:hover:bg-gray-200 dark:not-disabled:hover:bg-[#404040] duration-200 flex items-center justify-center">
                 {isPending ? (
                     <Image alt="Loading..." src={theme === "dark" ? loadingSVGDark : loadingSVG} width={36} height={36} />
