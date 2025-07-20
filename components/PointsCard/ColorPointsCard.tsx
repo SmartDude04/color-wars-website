@@ -1,23 +1,22 @@
-import PointsDisplay from "@/components/PointsCard/PointsDisplay";
 import "@/app/page.css";
 import React from "react";
-import { getGroupsInColorCached } from "@/cached";
 
 interface Props {
-    colorName: string
-    colorId: string
+    name: string
     hexColor: string
+    amount: number
+    groups: {
+        name: string
+    }[]
 }
 
-export default async function ColorPointsCard({ colorName, colorId, hexColor }: Props) {
-    const groups = await getGroupsInColorCached(colorId);
+export default async function ColorPointsCard({ name, hexColor, amount, groups }: Props) {
 
     // Verify hex color string
     const regex = /^#?([A-F0-9]{6}|[A-F0-9]{3})$/;
     if (!regex.test(hexColor)) {
-        throw new Error(`Invalid hex color "${hexColor}"passed to TeamPointsCard.`);
+        throw new Error(`Invalid hex color "${hexColor}" passed to TeamPointsCard.`);
     }
-
 
     // Convert hex to RGB to add an opacity and make the color less harsh
     const rawRGB = /^#?([A-F\d]{2})([A-F\d]{2})([A-F\d]{2})$/i.exec(hexColor);
@@ -35,11 +34,11 @@ export default async function ColorPointsCard({ colorName, colorId, hexColor }: 
                 "--dark-color": darkRgba,
                 "--light-color": rgba,
             } as React.CSSProperties}>
-                <h1 className="w-full text-center text-6xl sm:text-7xl pt-4 lg:pt-0">{colorName.toUpperCase()}</h1>
+                <h1 className="w-full text-center text-6xl sm:text-7xl pt-4 lg:pt-0">{name.toUpperCase()}</h1>
                 <h2 className="w-full text-center text-xl sm:text-2xl pl-4 pr-4">{groups.map(group => group.name).toString().replaceAll(",", ", ")}</h2>
             </div>
             <div className="w-full flex flex-col pt-9 lg:pt-5 pb-5 rounded-b-xl backdrop-blur-xl z-0 bg-[rgba(255,255,255,0.25)]">
-                <PointsDisplay teamId={colorId} />
+                <h1 className="w-full text-center sm:text-8xl text-7xl">{amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h1>
             </div>
         </div>
     );
