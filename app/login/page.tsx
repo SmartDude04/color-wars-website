@@ -1,6 +1,11 @@
 import LoginForm from "@/components/LoginForm";
 import Link from "next/link";
 import colorSplashBackground from "@/public/color-splash-background.png";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Login - Color Wars"
+}
 
 export default function Page() {
     return (

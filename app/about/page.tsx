@@ -1,6 +1,11 @@
 import Image from "next/image";
 import colorWarsLight from "@/public/color-wars-main.png";
 import colorWarsDark from "@/public/color-wars-main-dark.png";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "About - Color Wars"
+}
 
 export default function Page() {
     return (

@@ -3,6 +3,11 @@ import AddPointsForm from "@/components/add-points/AddPointsForm";
 import { getActivitiesCached, getColorsCached, getGroupsCached } from "@/cached";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Add Points - Color Wars"
+}
 
 export default async function Page() {
     // Prevent unauthorized access to this page
