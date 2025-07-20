@@ -68,24 +68,6 @@ export const getGroupsCached = unstable_cache(
     }
 );
 
-export const getGroupsInColorCached = unstable_cache(
-    async (colorId: string) => {
-        return prisma.group.findMany({
-            where: {
-                colorId: colorId
-            },
-            orderBy: {
-                name: "asc"
-            }
-        });
-    },
-    [],
-    {
-        tags: ["groups"],
-        revalidate: false
-    }
-);
-
 export const getPointsCached = unstable_cache(
     async () => {
         return prisma.point.findMany({
