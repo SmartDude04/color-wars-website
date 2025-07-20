@@ -27,7 +27,7 @@ export default function MobileNavbarAuth({ closeLinks }: Props) {
         <div className="flex flex-col w-fit mt-4">
             <h1 className="text-4xl mr-4">{session.user.username}</h1>
             <form action={handleSignOut}>
-                <button className={styles}>Sign Out</button>
+                <button className={styles}>Log Out</button>
             </form>
         </div>
     );

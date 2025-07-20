@@ -21,7 +21,7 @@ export default async function DesktopNavbarAuth() {
         <div className="flex flex-row items-center justify-center">
             <h1 className="text-2xl mr-4">{session.user.username}</h1>
             <form action={handleSignOut}>
-                <button className={`${styles} cursor-pointer`}>Sign Out</button>
+                <button className={`${styles} cursor-pointer`}>Log Out</button>
             </form>
         </div>
     );
