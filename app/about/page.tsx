@@ -16,7 +16,7 @@ export default function Page() {
                     <Image src={colorWarsDark} alt="Color Wars Logo" width={600} height={173} className="hidden dark:block" />
                 </div>
             </div>
-            <div className="w-full pl-[5%] pr-[5%] mt-8">
+            <div className="w-full pl-[5%] pr-[5%] mt-8 pb-8">
                 <div className="text-xl">
                     Welcome to <h1 className="bg-gradient-to-r from-blue-600 via-green-500 to-purple-400 inline-block text-transparent bg-clip-text">Color Wars!</h1> One week each summer, groups are put into colors to compete
                     in challenges. Groups earn points for their color throughout the day. At the end of the week, a color is crowned winner.
