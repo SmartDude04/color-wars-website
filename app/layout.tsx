@@ -28,7 +28,7 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
                     </SessionProvider>
                 </ThemeProvider>
                 <Analytics />
-                <SpeedInsights />
+                <SpeedInsights sampleRate={0.2}/>
             </body>
         </html>
     );
