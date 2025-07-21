@@ -15,17 +15,17 @@ export default function Navbar() {
                     <Image src={colorWarsLogo} width={198} height={57} alt="Color Wars Logo" className="dark:hidden"/>
                     <Image src={colorWarsLogoDark} width={198} height={57} alt="Color Wars Logo" className="hidden dark:block"/>
                 </Link>
-                <div className="hidden lg:flex flex-row items-center">
+                <div className="hidden xl:flex flex-row items-center">
                     <DesktopNavbarLinks />
                 </div>
             </div>
-            <div className="hidden lg:flex flex-row items-center">
+            <div className="hidden xl:flex flex-row items-center">
                 <DesktopNavbarAuth/>
                 <div className="ml-2">
                     <ThemeSwitcher />
                 </div>
             </div>
-            <div className="flex lg:hidden flex-row items-center">
+            <div className="flex xl:hidden flex-row items-center">
                 <MobileNavbarLinks />
             </div>
         </nav>
