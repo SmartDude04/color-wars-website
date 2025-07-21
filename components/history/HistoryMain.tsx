@@ -48,15 +48,15 @@ export default function HistoryMain({ initialPoints, canDelete }: Props) {
                     <h1 className={`${headerStyles} hidden md:block w-[17%]`}>Date/Time</h1>
                     <h1 className={`${headerStyles} w-[30%] md:w-[13%]`}>Amount</h1>
                     <h1 className={`${headerStyles} w-[30%] md:w-[10%]`}>Color</h1>
-                    <h1 className={`${headerStyles} hidden md:block w-[10%]`}>Group</h1>
+                    <h1 className={`${headerStyles} hidden md:block w-[15%]`}>Group</h1>
                     <h1 className={`${headerStyles} w-[35%] md:w-[15%]`}>Activity</h1>
-                    <h1 className={`${headerStyles} hidden md:block w-[35%]`}>Description</h1>
+                    <h1 className={`${headerStyles} hidden md:block w-[30%]`}>Description</h1>
                 </div>
                 { points.map((point, index) => (
                     <HistoryRow key={point.id} point={point} canDelete={canDelete} onDelete={handleDeletePoint} oddRow={index % 2 === 1} lastRow={index === points.length - 1}/>
                 ))}
             </div>
-            <h2 className="w-[95%] lg:w-[80%] mt-2 text-center text-sm">The latest 25 entries are viewable. To view more entries, contact Aidan.</h2>
+            <h2 className="w-[95%] lg:w-[80%] mt-2 text-center text-sm mb-8">The latest 50 entries are viewable. To view more entries, contact Aidan.</h2>
         </div>
     );
 }

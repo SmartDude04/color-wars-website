@@ -95,7 +95,7 @@ export const getPointsCached = unstable_cache(
             orderBy: {
                 timestamp: "desc"
             },
-            take: 25
+            take: 50
         });
     },
     [],
