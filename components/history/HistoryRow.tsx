@@ -42,7 +42,7 @@ export default function HistoryRow({ point, canDelete, onDelete, oddRow, lastRow
     }
     let minutes = timestamp.getMinutes().toString();
     if (minutes.length === 1) minutes = `0${minutes}`;
-    const dateTime = `${timestamp.getMonth()}/${timestamp.getDate()} ${hours}:${minutes} ${amPm}`;
+    const dateTime = `${timestamp.getMonth() + 1}/${timestamp.getDate()} ${hours}:${minutes} ${amPm}`;
 
     if (confirmDelete) {
         return (
