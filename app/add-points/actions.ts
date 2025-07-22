@@ -10,6 +10,11 @@ export async function addPoints(amount: number, groupId: string, activityName: s
         return;
     }
 
+    // Make sure the point amount is a valid value to add
+    if (!Number.isInteger(amount) || amount <= 0) {
+        return;
+    }
+
     // Make sure group is valid
     const validGroup = await prisma.group.count({
         where: {
