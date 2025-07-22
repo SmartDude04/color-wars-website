@@ -60,7 +60,7 @@ export default function HistoryRow({ point, canDelete, onDelete, oddRow, lastRow
             <h1 className="w-[30%] md:w-[10%]">{point.group.color.name}</h1>
             <h1 className="hidden md:block w-[15%]">{point.group.name}</h1>
             <h1 className="w-[35%] md:w-[15%]">{point.activity.name}</h1>
-            <p className={`hidden md:block ${canDelete ? "w-[25%]" : "w-[35%]"}`}>{point.description}</p>
+            <p className={`hidden md:block ${canDelete ? "w-[25%]" : "w-[30%]"}`}>{point.description}</p>
             { canDelete && (
                 <button onClick={() => setConfirmDelete(true)} className="w-[5%] flex justify-center cursor-pointer"><Trash2 width={24} height={24}/></button>
             ) }
