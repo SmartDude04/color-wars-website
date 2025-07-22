@@ -25,7 +25,6 @@ export default function ColorsHomeMain({ initialColors, isBlurred }: Props) {
 
     useEffect(() => {
         const interval = setInterval(async () => {
-            console.log("polling for colors...");
             const colors = await getColorsHome();
             setColors(colors);
         }, 10 * 1000);
