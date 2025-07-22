@@ -1,3 +1,5 @@
+"use client";
+
 import "@/app/page.css";
 import React from "react";
 
@@ -11,7 +13,7 @@ interface Props {
     blurred: boolean
 }
 
-export default async function ColorPointsCard({ name, hexColor, amount, groups, blurred }: Props) {
+export default function ColorPointsCard({ name, hexColor, amount, groups, blurred }: Props) {
 
     // Verify hex color string
     const regex = /^#?([A-F0-9]{6}|[A-F0-9]{3})$/;

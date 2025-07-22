@@ -1,5 +1,5 @@
 import { getColorsWithGroupsAndPointsCached, getIsBlurredCached } from "@/cached";
-import ColorPointsCard from "@/components/PointsCard/ColorPointsCard";
+import ColorsHomeMain from "@/components/PointsCard/ColorsHomeMain";
 import "@/app/page.css";
 import { auth } from "@/auth";
 
@@ -23,11 +23,7 @@ export default async function Page() {
                 </div>
             )}
             <div className={`bg duration-200 bg-no-repeat bg-fixed bg-size-[500%] w-full ${isBlurred && session?.user.role === "admin" ? "h-[calc(100%-72px-64px)]" : "min-h-[calc(100%-72px)]"}`}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pt-6 p-4 sm:p-6">
-                    {colorsWithGroupsAndPoints.map(color => (
-                        <ColorPointsCard key={color.id} name={color.name} hexColor={color.hexColor} groups={color.groups} amount={color.amount} blurred={session?.user.role !== "admin" && isBlurred} />
-                    ))}
-                </div>
+                <ColorsHomeMain initialColors={colorsWithGroupsAndPoints} isBlurred={isBlurred && session?.user.role === "admin"} />
             </div>
         </>
     );

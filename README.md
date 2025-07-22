@@ -32,8 +32,3 @@ Prior to this codebase, this site was written in PHP. Due to newer and faster te
 - Auth.js
 - Zod
 - bcrypt
-
-## Future Additions
-
-- Realtime updates to home page with Supabase Realtime
-  - Would need to enable RLS on the database and have auth for that security measure
