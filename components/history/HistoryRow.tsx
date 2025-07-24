@@ -39,7 +39,12 @@ export default function HistoryRow({ point, canDelete, onDelete, oddRow, lastRow
     if (hours > 12) {
         hours -= 12;
         amPm = "PM";
+    } else if (hours === 12) {
+        amPm = "PM";
+    } else if (hours === 0) {
+        hours = 12;
     }
+
     let minutes = timestamp.getMinutes().toString();
     if (minutes.length === 1) minutes = `0${minutes}`;
     const dateTime = `${timestamp.getMonth() + 1}/${timestamp.getDate()} ${hours}:${minutes} ${amPm}`;
