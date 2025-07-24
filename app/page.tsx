@@ -22,8 +22,8 @@ export default async function Page() {
                     <h2 className="text-md text-black w-[90%] text-center">As an admin, you can still see them</h2>
                 </div>
             )}
-            <div className={`bg duration-200 bg-no-repeat bg-fixed bg-size-[500%] w-full ${isBlurred && session?.user.role === "admin" ? "h-[calc(100%-72px-64px)]" : "min-h-[calc(100%-72px)]"}`}>
-                <ColorsHomeMain initialColors={colorsWithGroupsAndPoints} isBlurred={isBlurred && session?.user.role === "admin"} />
+            <div className={`bg duration-200 bg-no-repeat bg-fixed bg-size-[500%] w-full ${isBlurred && session?.user.role === "admin" ? "min-h-[calc(100%-72px-64px)]" : "min-h-[calc(100%-72px)]"}`}>
+                <ColorsHomeMain initialColors={colorsWithGroupsAndPoints} isBlurred={isBlurred && session?.user.role !== "admin"} />
             </div>
         </>
     );

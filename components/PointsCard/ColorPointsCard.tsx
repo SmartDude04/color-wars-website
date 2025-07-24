@@ -1,7 +1,7 @@
 "use client";
 
 import "@/app/page.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 interface Props {
     name: string
@@ -14,6 +14,17 @@ interface Props {
 }
 
 export default function ColorPointsCard({ name, hexColor, amount, groups, blurred }: Props) {
+    const [rand, setRand] = useState(0);
+
+    useEffect(() => {
+        if (blurred) {
+            const interval = setInterval(() => {
+                setRand(Math.floor(Math.random() * 900000) + 100000);
+            }, 50);
+    
+            return () => clearInterval(interval);
+        }
+    }, [blurred]);
 
     // Verify hex color string
     const regex = /^#?([A-F0-9]{6}|[A-F0-9]{3})$/;
@@ -42,7 +53,7 @@ export default function ColorPointsCard({ name, hexColor, amount, groups, blurre
             </div>
             <div className="items-center justify-center w-full flex flex-col pt-6 pb-6 rounded-b-xl backdrop-blur-xl z-0 bg-[rgba(255,255,255,0.25)]">
                 <h1 className={`text-center text-7xl z-0 max-w-[95%] ${blurred && "blur-[20px] cursor-default"}`}>{
-                    blurred ? Math.floor(Math.random() * 90000) + 10000 : amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                    blurred ? rand : amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
                 }</h1>
             </div>
         </div>
