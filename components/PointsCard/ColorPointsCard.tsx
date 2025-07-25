@@ -18,11 +18,7 @@ export default function ColorPointsCard({ name, hexColor, amount, groups, blurre
 
     useEffect(() => {
         if (blurred) {
-            const interval = setInterval(() => {
-                setRand(Math.floor(Math.random() * 900000) + 100000);
-            }, 50);
-    
-            return () => clearInterval(interval);
+            setRand(Math.floor(Math.random() * 900000) + 100000);
         }
     }, [blurred]);
 
