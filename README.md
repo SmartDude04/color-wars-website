@@ -32,3 +32,47 @@ Prior to this codebase, this site was written in PHP. Due to newer and faster te
 - Auth.js
 - Zod
 - bcrypt
+
+# Images
+*All images contain only test data*
+
+<div style="display: flex; align-items: center; flex-direction: column">
+<img src="img/home.png" width="700" alt="Home Page">
+Home Page
+<br>
+<br>
+
+<img src="img/history.png" width="700" alt="History Page">
+History Page
+<br>
+<br>
+
+<img src="img/groups.png" width="700" alt="Groups Page">
+Groups Page
+<br>
+<br>
+
+<img src="img/colors.png" width="700" alt="Colors Page">
+Colors Page
+<br>
+<br>
+
+<img src="img/users.png" width="700" alt="Users Page">
+Users Page
+<br>
+<br>
+
+<img src="img/add-points.png" width="700" alt="Adding Points">
+Adding Points
+<br>
+<br>
+
+<img src="img/login.png" width="700" alt="Logging In">
+Logging In
+<br>
+<br>
+
+<img src="img/mobile-navbar.png" width="300" alt="Mobile Navbar">
+Mobile Navbar
+
+</div>
