@@ -3,7 +3,7 @@
 import { prisma } from "@/prisma";
 import { getPointsCached } from "@/cached";
 import { auth } from "@/auth";
-import { revalidateTag } from "next/cache";
+import { updateTag } from "next/cache";
 
 export async function getPoints() {
     const session = await auth();
@@ -25,5 +25,5 @@ export async function deletePointEntry(id: string) {
         }
     });
 
-    revalidateTag("points");
+    updateTag("points");
 }

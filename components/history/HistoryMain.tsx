@@ -56,7 +56,7 @@ export default function HistoryMain({ initialPoints, canDelete }: Props) {
                     <HistoryRow key={point.id} point={point} canDelete={canDelete} onDelete={handleDeletePoint} oddRow={index % 2 === 1} lastRow={index === points.length - 1}/>
                 ))}
             </div>
-            <h2 className="w-[95%] lg:w-[80%] mt-2 text-center text-sm mb-8">The latest 50 entries are viewable. To view more entries, contact Aidan.</h2>
+            <h2 className="w-[95%] lg:w-[80%] mt-2 text-center text-sm mb-8">Only the latest 50 entries are viewable.</h2>
         </div>
     );
 }

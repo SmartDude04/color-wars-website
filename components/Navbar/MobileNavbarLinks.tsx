@@ -41,7 +41,7 @@ export default function MobileNavbarLinks() {
                     </div>
                 ) }
                 <Link href="/" className={linkStyles} onNavigate={() => setOpened(false)}>Home</Link>
-                <Link href="/about" className={linkStyles} onNavigate={() => setOpened(false)}>About</Link>
+                {/*<Link href="/about" className={linkStyles} onNavigate={() => setOpened(false)}>About</Link>*/}
                 { role === "admin" || role === "specialist" || role === "user" ? (
                     <Link href="/history" className={linkStyles} onNavigate={() => setOpened(false)}>History</Link>
                 ) : <></>}

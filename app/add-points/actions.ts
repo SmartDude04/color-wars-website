@@ -2,7 +2,7 @@
 
 import { auth } from "@/auth";
 import { prisma } from "@/prisma";
-import { revalidateTag } from "next/cache";
+import { updateTag } from "next/cache";
 
 export async function addPoints(amount: number, groupId: string, activityName: string, description?: string) {
     const session = await auth();
@@ -48,5 +48,5 @@ export async function addPoints(amount: number, groupId: string, activityName: s
     });
 
     // Update the tag
-    revalidateTag("points");
+    updateTag("points");
 }

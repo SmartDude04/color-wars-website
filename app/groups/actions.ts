@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidateTag } from "next/cache";
+import { updateTag } from "next/cache";
 import { prisma } from "@/prisma";
 import { auth } from "@/auth";
 import { getGroupsCached } from "@/cached";
@@ -51,7 +51,7 @@ export async function addGroup(name: string, colorId: string) {
     });
 
     // Revalidate the groups tag
-    revalidateTag("groups");
+    updateTag("groups");
 }
 
 export async function updateGroup(id: string, name: string, colorId: string) {
@@ -97,7 +97,7 @@ export async function updateGroup(id: string, name: string, colorId: string) {
     });
 
     // Revalidate the groups
-    revalidateTag("groups");
+    updateTag("groups");
 }
 
 export async function deleteGroup(id: string) {
@@ -116,7 +116,7 @@ export async function deleteGroup(id: string) {
     });
 
     // Revalidate the colors tag
-    revalidateTag("colors");
+    updateTag("colors");
 
     await prisma.group.delete({
         where: {
@@ -124,5 +124,5 @@ export async function deleteGroup(id: string) {
         }
     });
 
-    revalidateTag("groups");
+    updateTag("groups");
 }

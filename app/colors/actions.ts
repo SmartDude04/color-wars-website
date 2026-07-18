@@ -2,7 +2,7 @@
 
 import { auth } from "@/auth";
 import { prisma } from "@/prisma";
-import { revalidateTag } from "next/cache";
+import { updateTag } from "next/cache";
 import { getColorsCached } from "@/cached";
 
 export async function getColors() {
@@ -45,7 +45,7 @@ export async function addColor(name: string, hexColor: string) {
     });
 
     // Revalidate the colors tag
-    revalidateTag("colors");
+    updateTag("colors");
 }
 
 export async function updateColor(id: string, name: string, hexColor: string) {
@@ -85,7 +85,7 @@ export async function updateColor(id: string, name: string, hexColor: string) {
     });
 
     // Revalidate the colors tag
-    revalidateTag("colors");
+    updateTag("colors");
 }
 
 export async function deleteColor(id: string) {
@@ -104,7 +104,7 @@ export async function deleteColor(id: string) {
     });
 
     // Update associated caches
-    revalidateTag("points");
+    updateTag("points");
 
     // Delete any groups associated with this color
     await prisma.group.deleteMany({
@@ -114,7 +114,7 @@ export async function deleteColor(id: string) {
     });
 
     // Update associated caches
-    revalidateTag("groups");
+    updateTag("groups");
 
     await prisma.color.delete({
         where: {
@@ -123,7 +123,7 @@ export async function deleteColor(id: string) {
     });
 
     // Revalidate the colors tag
-    revalidateTag("colors");
+    updateTag("colors");
 }
 
 export async function setBlur(isBlurred: boolean) {
@@ -136,5 +136,5 @@ export async function setBlur(isBlurred: boolean) {
     } else {
         await prisma.blur.deleteMany();
     }
-    revalidateTag("blur");
+    updateTag("blur");
 }

@@ -2,7 +2,7 @@
 
 import { prisma } from "@/prisma";
 import { auth } from "@/auth";
-import { revalidateTag } from "next/cache";
+import { updateTag } from "next/cache";
 import { getUsersCached } from "@/cached";
 
 export async function getUsersData() {
@@ -47,7 +47,7 @@ export async function verifyUserData(id: string) {
     });
 
     // Revalidate user tag
-    revalidateTag("users");
+    updateTag("users");
 }
 
 export async function updateUserRole(id: string, newRole: string) {
@@ -74,7 +74,7 @@ export async function updateUserRole(id: string, newRole: string) {
     }
 
     // Revalidate user tag
-    revalidateTag("users");
+    updateTag("users");
 }
 
 export async function deleteUserData(id: string) {
@@ -97,7 +97,7 @@ export async function deleteUserData(id: string) {
         });
 
         // Make sure to revalidate appropriate tags
-        revalidateTag("points");
+        updateTag("points");
 
         // Then delete the user themselves
         await prisma.user.delete({
@@ -117,5 +117,5 @@ export async function deleteUserData(id: string) {
     }
 
     // Revalidate user tag
-    revalidateTag("users");
+    updateTag("users");
 }
